@@ -25,7 +25,7 @@ jobs:
         # 使用action库 actions/setup-node 安装node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.20.0
+          node-version: 22.18.0
           cache: 'pnpm'
       # 安装
       - name: 安装依赖
