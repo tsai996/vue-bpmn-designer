@@ -55,35 +55,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        // 打包分类
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-        // 分包策略
-        manualChunks: {
-          vue: ['vue'],
-          'element-plus-icons': ['@element-plus/icons-vue'],
-          'element-plus': ['element-plus'],
-          'bpmn-js': ['bpmn-js'],
-          'bpmn-modules': [
-            'bpmn-js-bpmnlint',
-            'bpmn-js-color-picker',
-            'bpmn-js-create-append-anything',
-            'bpmn-js-token-simulation',
-            'bpmnlint',
-            'diagram-js',
-            'diagram-js-grid',
-            'diagram-js-grid-bg',
-            'diagram-js-minimap',
-          ],
-          codemirror: ['codemirror'],
-          'codemirror-lang': [
-            '@codemirror/lang-json',
-            '@codemirror/legacy-modes/mode/shell',
-            '@codemirror/legacy-modes/mode/groovy',
-            '@codemirror/lang-javascript',
-          ],
-        },
         sanitizeFileName(name) {
           const match = /^[a-z]:/i.exec(name)
           const driveLetter = match ? match[0] : ''
