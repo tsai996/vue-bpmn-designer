@@ -220,9 +220,6 @@ const toggleRightArrow = () => {
   }
   rightArrow.value = !rightArrow.value
 }
-const toGitee = () => {
-  window.open('https://gitee.com/cai_xiao_feng/lowflow-design')
-}
 provide('ProcessDesigner', {
   modeler: modeler,
 })
@@ -260,10 +257,6 @@ defineExpose({
     <el-header class="design-header">
       <el-text tag="b" :size="'large'">vue-bpmn-designer 流程设计器（flowable版）</el-text>
       <el-space>
-        <el-button @click="toGitee">
-          <Iconify class="el-icon--left" icon="ri:github-fill" :size="4" />
-          仿钉钉流程设计器
-        </el-button>
         <el-switch
           inline-prompt
           active-text="顶部标签"
@@ -281,6 +274,20 @@ defineExpose({
           v-model="formSize"
         />
         <el-switch inline-prompt :active-icon="Moon" :inactive-icon="Sunny" v-model="isDark" />
+        <el-link
+          underline="never"
+          target="_blank"
+          href="https://github.com/tsai996/vue-bpmn-designer"
+        >
+          <Iconify class="el-icon--left" icon="ri:github-fill" width="25px" />
+        </el-link>
+        <el-link
+          underline="never"
+          target="_blank"
+          href="https://gitee.com/cai_xiao_feng/vue-bpmn-designer"
+        >
+          <Iconify class="el-icon--left" icon="ri:gitee-fill" width="25px" />
+        </el-link>
       </el-space>
     </el-header>
     <el-container style="overflow-y: auto">
