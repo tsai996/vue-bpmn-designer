@@ -32,6 +32,11 @@
 
 - 如果对仿钉钉流程设计器感兴趣可查看：[lowflow-design](https://gitee.com/cai_xiao_feng/lowflow-design)
 
+## 仓库地址
+
+- Gitee: https://gitee.com/cai_xiao_feng/vue-bpmn-designer
+- GitHub: https://github.com/tsai996/vue-bpmn-designer
+
 ## 🖼️ 示例图
 
 <p>
