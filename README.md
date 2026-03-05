@@ -9,7 +9,7 @@
 ---
 ## 在线预览
 
-- 预览地址：http://182.61.39.195:4080/
+- 预览地址：https://tsai996.github.io/vue-bpmn-designer/
 
 
 基于 **Vue 3** + **Vite 6** + **TypeScript** 构建的现代化流程设计器组件。本项目深度集成了 `bpmn-js`，并针对 Flowable 规范进行了深度定制，提供了开箱即用的流程绘制、属性编辑和 BPMN lint 校验等能力。

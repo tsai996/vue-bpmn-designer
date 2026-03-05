@@ -6,7 +6,7 @@
 ---
 ## Online Preview
 
-- Preview URL: http://182.61.39.195:4080/
+- Preview URL: https://tsai996.github.io/vue-bpmn-designer/
 
 Modern BPMN designer built with **Vue 3** + **Vite 6** + **TypeScript**.  
 This project deeply integrates `bpmn-js` and provides Flowable-focused customization for diagram modeling, property editing, and BPMN lint validation out of the box.
