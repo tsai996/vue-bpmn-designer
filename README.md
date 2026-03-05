@@ -1,6 +1,9 @@
 ﻿<div align="center">
     <h1>vue-bpmn-designer</h1>
     <p>bpmn-js流程设计器 (Flowable版)</p>
+    <p>
+      <a href="./README.md">简体中文</a> | <a href="./README.en.md">English</a>
+    </p>
 </div>
 
 ---
@@ -10,7 +13,6 @@
 
 
 基于 **Vue 3** + **Vite 6** + **TypeScript** 构建的现代化流程设计器组件。本项目深度集成了 `bpmn-js`，并针对 Flowable 规范进行了深度定制，提供了开箱即用的流程绘制、属性编辑和 BPMN lint 校验等能力。
-如果对仿钉钉流程设计器感兴趣可查看：[lowflow-design](https://gitee.com/cai_xiao_feng/lowflow-design)。
 
 ## ✨ 特性 (Features)
 
@@ -26,6 +28,10 @@
   - 配置了 `unplugin-auto-import` 和 `unplugin-vue-components` 实现组件和 API 自动引入
   - 集成 ESLint、Prettier 进行代码规范检查
 
+## 相关项目
+
+- 如果对仿钉钉流程设计器感兴趣可查看：[lowflow-design](https://gitee.com/cai_xiao_feng/lowflow-design)
+
 ## 🖼️ 示例图
 
 <p>
@@ -39,10 +45,10 @@
 
 ```bash
 # 克隆项目
-git clone [repository-url]
+git clone https://github.com/tsai996/vue-bpmn-designer.git
 
 # 进入项目目录
-cd bpmnjs
+cd vue-bpmn-designer
 
 # 安装依赖
 pnpm install
