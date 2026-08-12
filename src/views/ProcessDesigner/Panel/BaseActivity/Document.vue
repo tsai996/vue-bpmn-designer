@@ -42,8 +42,8 @@ const findDocumentation = (docs: Record<string, string>[]) =>
 </script>
 
 <template>
-  <el-form-item label="描述信息">
-    <el-input v-model="document" type="textarea" :rows="3" placeholder="请输入描述信息" />
+  <el-form-item :label="$tu('描述信息')">
+    <el-input v-model="document" type="textarea" :rows="3" :placeholder="$tu('请输入描述信息')" />
   </el-form-item>
 </template>
 

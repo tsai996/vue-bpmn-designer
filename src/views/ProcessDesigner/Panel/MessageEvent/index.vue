@@ -67,9 +67,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="消息事件">
-    <el-form-item prop="messageRef" label="消息引用">
-      <el-select v-model="messageRef" placeholder="请选择消息引用">
+  <el-collapse-item name="arg1" :title="$tu('消息事件')">
+    <el-form-item prop="messageRef" :label="$tu('消息引用')">
+      <el-select v-model="messageRef" :placeholder="$tu('请选择消息引用')">
         <el-option
           v-for="item in messages"
           :key="item.id"
@@ -84,7 +84,7 @@ onMounted(() => {
             style="width: 100%"
             :icon="Plus"
             @click="addMessageEvent()"
-            >新增消息定义</el-button
+            >{{ $t('ui.newMessageDefinition') }}</el-button
           >
         </template>
       </el-select>

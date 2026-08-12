@@ -89,18 +89,23 @@ onMounted(() => {
 <template>
   <div class="data-container">
     <div class="data-header">
-      <el-text>数据对象</el-text>
-      <el-button type="primary" link :icon="Plus" @click="editDataObject()">添加</el-button>
+      <el-text>{{ $tu('数据对象') }}</el-text>
+      <el-button type="primary" link :icon="Plus" @click="editDataObject()">{{
+        $t('ui.add')
+      }}</el-button>
     </div>
     <el-table :data="dataObjects" height="200px">
-      <el-table-column prop="name" show-overflow-tooltip label="名称"></el-table-column>
-      <el-table-column prop="type" show-overflow-tooltip label="类型"></el-table-column>
-      <el-table-column prop="value" show-overflow-tooltip label="默认值"></el-table-column>
-      <el-table-column label="操作" min-width="63px" align="center">
+      <el-table-column prop="name" show-overflow-tooltip :label="$tu('名称')"></el-table-column>
+      <el-table-column prop="type" show-overflow-tooltip :label="$tu('类型')"></el-table-column>
+      <el-table-column prop="value" show-overflow-tooltip :label="$tu('默认值')"></el-table-column>
+      <el-table-column :label="$t('ui.operation')" min-width="63px" align="center">
         <template #default="{ row }">
           <el-space>
             <el-button type="primary" :icon="EditPen" link @click="editDataObject(row)"></el-button>
-            <el-popconfirm title="您确定要删除该数据对象吗？" @confirm="removeDataObject(row)">
+            <el-popconfirm
+              :title="$t('ui.confirmDeleteDataObject')"
+              @confirm="removeDataObject(row)"
+            >
               <template #reference>
                 <el-button type="danger" :icon="Delete" link></el-button>
               </template>

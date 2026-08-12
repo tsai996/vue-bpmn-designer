@@ -97,17 +97,19 @@ onMounted(() => {
 <template>
   <div class="properties-container">
     <div class="properties-header">
-      <el-text>扩展属性</el-text>
-      <el-button type="primary" link :icon="Plus" @click="editAttribute()">添加</el-button>
+      <el-text>{{ $tu('扩展属性') }}</el-text>
+      <el-button type="primary" link :icon="Plus" @click="editAttribute()">{{
+        $t('ui.add')
+      }}</el-button>
     </div>
     <el-table :data="propertiesData" height="200px">
-      <el-table-column prop="name" show-overflow-tooltip label="属性名"></el-table-column>
-      <el-table-column prop="value" show-overflow-tooltip label="属性值"></el-table-column>
-      <el-table-column label="操作" min-width="60px" align="center">
+      <el-table-column prop="name" show-overflow-tooltip :label="$tu('属性名')"></el-table-column>
+      <el-table-column prop="value" show-overflow-tooltip :label="$tu('属性值')"></el-table-column>
+      <el-table-column :label="$t('ui.operation')" min-width="60px" align="center">
         <template #default="{ row }">
           <el-space>
             <el-button type="primary" :icon="EditPen" link @click="editAttribute(row)"></el-button>
-            <el-popconfirm title="您确定要删除该属性吗？" @confirm="removeAttribute(row)">
+            <el-popconfirm :title="$t('ui.confirmDeleteProperty')" @confirm="removeAttribute(row)">
               <template #reference>
                 <el-button type="danger" :icon="Delete" link></el-button>
               </template>

@@ -67,9 +67,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="错误事件">
-    <el-form-item prop="errorRef" label="错误引用">
-      <el-select v-model="errorRef" placeholder="请选择错误引用">
+  <el-collapse-item name="arg1" :title="$tu('错误事件')">
+    <el-form-item prop="errorRef" :label="$tu('错误引用')">
+      <el-select v-model="errorRef" :placeholder="$tu('请选择错误引用')">
         <el-option
           v-for="item in errors"
           :key="item.id"
@@ -77,8 +77,14 @@ onMounted(() => {
           :value="item.id"
         ></el-option>
         <template #footer>
-          <el-button text bg size="small" style="width: 100%" :icon="Plus" @click="addErrorEvent()"
-            >新增错误定义</el-button
+          <el-button
+            text
+            bg
+            size="small"
+            style="width: 100%"
+            :icon="Plus"
+            @click="addErrorEvent()"
+            >{{ $t('ui.newErrorDefinition') }}</el-button
           >
         </template>
       </el-select>

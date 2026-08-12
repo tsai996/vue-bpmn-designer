@@ -22,39 +22,45 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="处理人">
-    <el-form-item prop="assignee" label="受让人">
-      <el-select v-model="assignee" filterable allow-create clearable placeholder="请选择受让人">
-        <el-option label="张三" value="zhangsan" />
-        <el-option label="李四" value="lisi" />
-        <el-option label="王五" value="wangwu" />
-        <el-option label="毛六" value="maoliu" />
-        <el-option label="钱七" value="qianqi" />
+  <el-collapse-item name="arg1" :title="$tu('处理人')">
+    <el-form-item prop="assignee" :label="$tu('受让人')">
+      <el-select
+        v-model="assignee"
+        filterable
+        allow-create
+        clearable
+        :placeholder="$tu('请选择受让人')"
+      >
+        <el-option :label="$tu('张三')" value="zhangsan" />
+        <el-option :label="$tu('李四')" value="lisi" />
+        <el-option :label="$tu('王五')" value="wangwu" />
+        <el-option :label="$tu('毛六')" value="maoliu" />
+        <el-option :label="$tu('钱七')" value="qianqi" />
       </el-select>
     </el-form-item>
-    <el-form-item prop="candidateUsers" label="候选人">
-      <el-select v-model="candidateUsers" multiple clearable placeholder="请选择候选人">
-        <el-option label="张三" value="zhangsan" />
-        <el-option label="李四" value="lisi" />
-        <el-option label="王五" value="wangwu" />
-        <el-option label="毛六" value="maoliu" />
-        <el-option label="钱七" value="qianqi" />
+    <el-form-item prop="candidateUsers" :label="$tu('候选人')">
+      <el-select v-model="candidateUsers" multiple clearable :placeholder="$tu('请选择候选人')">
+        <el-option :label="$tu('张三')" value="zhangsan" />
+        <el-option :label="$tu('李四')" value="lisi" />
+        <el-option :label="$tu('王五')" value="wangwu" />
+        <el-option :label="$tu('毛六')" value="maoliu" />
+        <el-option :label="$tu('钱七')" value="qianqi" />
       </el-select>
     </el-form-item>
-    <el-form-item prop="candidateGroups" label="候选组">
-      <el-select v-model="candidateGroups" multiple clearable placeholder="请选择候选组">
-        <el-option label="部门A" value="deptA" />
-        <el-option label="部门B" value="deptB" />
-        <el-option label="部门C" value="deptC" />
-        <el-option label="部门D" value="deptD" />
-        <el-option label="部门E" value="deptE" />
+    <el-form-item prop="candidateGroups" :label="$tu('候选组')">
+      <el-select v-model="candidateGroups" multiple clearable :placeholder="$tu('请选择候选组')">
+        <el-option :label="$tu('部门A')" value="deptA" />
+        <el-option :label="$tu('部门B')" value="deptB" />
+        <el-option :label="$tu('部门C')" value="deptC" />
+        <el-option :label="$tu('部门D')" value="deptD" />
+        <el-option :label="$tu('部门E')" value="deptE" />
       </el-select>
     </el-form-item>
-    <el-form-item prop="priority" label="优先级">
-      <el-input-number v-model="priority" placeholder="优先级" :min="0" :max="10" />
+    <el-form-item prop="priority" :label="$tu('优先级')">
+      <el-input-number v-model="priority" :placeholder="$tu('优先级')" :min="0" :max="10" />
     </el-form-item>
-    <el-form-item prop="dueDate" label="到期时间">
-      <el-input v-model="dueDate" placeholder="请输入到期时间" />
+    <el-form-item prop="dueDate" :label="$tu('到期时间')">
+      <el-input v-model="dueDate" :placeholder="$tu('请输入到期时间')" />
     </el-form-item>
   </el-collapse-item>
 </template>

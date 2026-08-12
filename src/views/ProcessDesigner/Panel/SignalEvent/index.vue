@@ -68,9 +68,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="信号事件">
-    <el-form-item prop="signalRef" label="信号引用">
-      <el-select v-model="signalRef" placeholder="请选择信号引用">
+  <el-collapse-item name="arg1" :title="$tu('信号事件')">
+    <el-form-item prop="signalRef" :label="$tu('信号引用')">
+      <el-select v-model="signalRef" :placeholder="$tu('请选择信号引用')">
         <el-option
           v-for="item in signals"
           :key="item.id"
@@ -86,7 +86,7 @@ onMounted(() => {
             :icon="Plus"
             @click="addSignalEvent()"
           >
-            新增信号定义
+            {{ $tu('新增信号定义') }}
           </el-button>
         </template>
       </el-select>

@@ -98,7 +98,7 @@ defineExpose({
       <span
         :class="['codemirror-input__prefix', { popup: popup }]"
         @click="toggleFullScreen"
-        :title="popup && !fullScreen ? '全屏显示' : '退出全屏'"
+        :title="$tu(popup && !fullScreen ? '全屏显示' : '退出全屏')"
       >
         <slot name="prefix">
           <SvgIcon name="function-outlined" :size="15" />

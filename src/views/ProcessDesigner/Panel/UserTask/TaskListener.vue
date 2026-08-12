@@ -93,18 +93,20 @@ onMounted(() => {
 <template>
   <div class="listener-container">
     <div class="listener-header">
-      <el-text>任务监听器</el-text>
-      <el-button type="primary" link :icon="Plus" @click="editListener()">添加</el-button>
+      <el-text>{{ $tu('任务监听器') }}</el-text>
+      <el-button type="primary" link :icon="Plus" @click="editListener()">{{
+        $t('ui.add')
+      }}</el-button>
     </div>
     <el-table :data="listeners" height="200px">
-      <el-table-column prop="event" label="事件"></el-table-column>
-      <el-table-column prop="type" show-overflow-tooltip label="类型"></el-table-column>
-      <el-table-column prop="impl" show-overflow-tooltip label="监听"></el-table-column>
-      <el-table-column label="操作" min-width="60px" align="center">
+      <el-table-column prop="event" :label="$tu('事件')"></el-table-column>
+      <el-table-column prop="type" show-overflow-tooltip :label="$tu('类型')"></el-table-column>
+      <el-table-column prop="impl" show-overflow-tooltip :label="$tu('监听')"></el-table-column>
+      <el-table-column :label="$t('ui.operation')" min-width="60px" align="center">
         <template #default="{ row }">
           <el-space>
             <el-button type="primary" :icon="EditPen" link @click="editListener(row)"></el-button>
-            <el-popconfirm title="您确定要删除该事件吗？" @confirm="removeListener(row)">
+            <el-popconfirm :title="$t('ui.confirmDeleteEvent')" @confirm="removeListener(row)">
               <template #reference>
                 <el-button type="danger" :icon="Delete" link></el-button>
               </template>
@@ -113,12 +115,12 @@ onMounted(() => {
         </template>
       </el-table-column>
     </el-table>
-    <ListenerDrawer ref="listenerDrawerRef" title="任务监听器" @confirm="confirmListener">
+    <ListenerDrawer ref="listenerDrawerRef" :title="$tu('任务监听器')" @confirm="confirmListener">
       <template #eventOptions>
-        <el-radio-button label="创建" value="create" />
-        <el-radio-button label="完成" value="complete" />
-        <el-radio-button label="指派" value="assignment" />
-        <el-radio-button label="删除" value="delete" />
+        <el-radio-button :label="$tu('创建')" value="create" />
+        <el-radio-button :label="$tu('完成')" value="complete" />
+        <el-radio-button :label="$tu('指派')" value="assignment" />
+        <el-radio-button :label="$tu('删除')" value="delete" />
       </template>
     </ListenerDrawer>
   </div>

@@ -50,30 +50,30 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="命令">
-    <el-form-item label="命令">
+  <el-collapse-item name="arg1" :title="$tu('命令')">
+    <el-form-item :label="$tu('命令')">
       <Codemirror
         :rows="4"
         :max-rows="10"
         autosize
         popup
-        placeholder="请输入命令"
+        :placeholder="$tu('请输入命令')"
         :extensions="[shellSupport]"
         v-model="command"
       />
-      <!--      <el-input v-model="command" type="textarea" :rows="3" placeholder="请输入命令" />-->
+      <!--      <el-input v-model="command" type="textarea" :rows="3" :placeholder="$tu('请输入命令')" />-->
     </el-form-item>
-    <el-form-item label="参数">
+    <el-form-item :label="$tu('参数')">
       <template #label>
         <div class="flex-center">
-          参数
+          {{ $tu('参数') }}
           <el-button
             :icon="Plus"
             type="primary"
             link
             @click="args.push('')"
             :disabled="args.length > 4"
-            >添加
+            >{{ $tu('添加') }}
           </el-button>
         </div>
       </template>
@@ -83,7 +83,7 @@ onMounted(() => {
             :model-value="args[index]"
             @update:model-value="updateModelValue($event, index)"
             clearable
-            placeholder="请输入参数"
+            :placeholder="$tu('请输入参数')"
           ></el-input>
         </el-col>
         <el-col :span="3">
@@ -91,31 +91,31 @@ onMounted(() => {
         </el-col>
       </el-row>
     </el-form-item>
-    <el-form-item label="输出变量">
-      <el-input v-model="outputVariable" placeholder="请输入输出变量" />
+    <el-form-item :label="$tu('输出变量')">
+      <el-input v-model="outputVariable" :placeholder="$tu('请输入输出变量')" />
     </el-form-item>
     <el-row :gutter="10">
       <el-col :span="form?.labelPosition === 'top' ? 8 : 24">
-        <el-form-item label="等待">
+        <el-form-item :label="$tu('等待')">
           <el-switch v-model="wait" active-value="true" inactive-value="false" />
         </el-form-item>
       </el-col>
       <el-col :span="form?.labelPosition === 'top' ? 8 : 24">
-        <el-form-item label="重定向错误">
+        <el-form-item :label="$tu('重定向错误')">
           <el-switch v-model="redirectError" active-value="true" inactive-value="false" />
         </el-form-item>
       </el-col>
       <el-col :span="form?.labelPosition === 'top' ? 8 : 24">
-        <el-form-item label="清除环境变量">
+        <el-form-item :label="$tu('清除环境变量')">
           <el-switch v-model="cleanEnv" active-value="true" inactive-value="false" />
         </el-form-item>
       </el-col>
     </el-row>
-    <el-form-item label="执行目录">
-      <el-input v-model="directory" placeholder="请输入执行目录，默认当前目录" />
+    <el-form-item :label="$tu('执行目录')">
+      <el-input v-model="directory" :placeholder="$tu('请输入执行目录，默认当前目录')" />
     </el-form-item>
-    <el-form-item label="错误代码变量">
-      <el-input v-model="errorCodeVariable" placeholder="请输入错误代码存储变量" />
+    <el-form-item :label="$tu('错误代码变量')">
+      <el-input v-model="errorCodeVariable" :placeholder="$tu('请输入错误代码存储变量')" />
     </el-form-item>
   </el-collapse-item>
 </template>

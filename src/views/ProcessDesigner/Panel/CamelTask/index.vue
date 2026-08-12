@@ -8,9 +8,9 @@ const camelContext = useFieldRef('camelContext')
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="驼峰">
-    <el-form-item label="驼峰内容">
-      <el-input v-model="camelContext" placeholder="请输入驼峰内容" />
+  <el-collapse-item name="arg1" :title="$tu('驼峰')">
+    <el-form-item :label="$tu('驼峰内容')">
+      <el-input v-model="camelContext" :placeholder="$tu('请输入驼峰内容')" />
     </el-form-item>
   </el-collapse-item>
 </template>

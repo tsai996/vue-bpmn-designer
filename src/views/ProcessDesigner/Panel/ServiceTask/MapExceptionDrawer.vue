@@ -27,7 +27,7 @@ const errorCodeFormRule = ref<FormItemRule>({
   trigger: 'blur',
   validator(_, value, callback) {
     if (!value) {
-      return callback(new Error('请输入错误码'))
+      return callback(new Error(translateUi('请输入错误码')))
     }
     callback()
   },
@@ -37,10 +37,10 @@ const exceptionClassFormRule = ref<FormItemRule>({
   trigger: 'blur',
   validator(_, value, callback) {
     if (!value) {
-      return callback(new Error('请输入异常类'))
+      return callback(new Error(translateUi('请输入异常类')))
     }
     if (!isClassValid(value)) {
-      callback(new Error('请输入正确的java类路径，必须是 com.xx.xx 格式'))
+      callback(new Error(translateUi('请输入正确的java类路径，必须是 com.xx.xx 格式')))
     }
     callback()
   },
@@ -102,7 +102,7 @@ defineExpose({
     append-to-body
     :lock-scroll="false"
     @closed="onClosed"
-    title="异常映射"
+    :title="$tu('异常映射')"
   >
     <el-form ref="formRef" label-position="top" :model="cloned" :size="formSize">
       <el-form-item>
@@ -115,14 +115,14 @@ defineExpose({
             :icon="Plus"
             @click="addException"
           >
-            添加映射
+            {{ $tu('添加映射') }}
           </el-button>
         </template>
         <el-table :data="cloned.exceptions" height="400px">
-          <el-table-column prop="errorCode" label="错误码">
+          <el-table-column prop="errorCode" :label="$tu('错误码')">
             <template #default="{ row, $index }">
               <el-form-item :prop="`exceptions.${$index}.errorCode`" :rules="errorCodeFormRule">
-                <el-select v-model="row.errorCode" placeholder="请选择错误码">
+                <el-select v-model="row.errorCode" :placeholder="$tu('请选择错误码')">
                   <el-option
                     v-for="item in errorEvents.filter(
                       (e) =>
@@ -144,20 +144,20 @@ defineExpose({
                       :icon="Plus"
                       @click="addErrorEvent()"
                     >
-                      新增错误定义
+                      {{ $tu('新增错误定义') }}
                     </el-button>
                   </template>
                 </el-select>
               </el-form-item>
             </template>
           </el-table-column>
-          <el-table-column prop="exceptionClass" min-width="120px" label="异常类">
+          <el-table-column prop="exceptionClass" min-width="120px" :label="$tu('异常类')">
             <template #default="{ row, $index }">
               <el-form-item
                 :prop="`exceptions.${$index}.exceptionClass`"
                 :rules="exceptionClassFormRule"
               >
-                <el-input v-model="row.exceptionClass" placeholder="java异常类路径" />
+                <el-input v-model="row.exceptionClass" :placeholder="$tu('java异常类路径')" />
               </el-form-item>
             </template>
           </el-table-column>
@@ -165,13 +165,13 @@ defineExpose({
             align="center"
             prop="includeChildExceptions"
             min-width="60px"
-            label="包含子异常"
+            :label="$tu('包含子异常')"
           >
             <template #default="{ row }">
               <el-switch v-model="row.includeChildExceptions" />
             </template>
           </el-table-column>
-          <el-table-column align="center" min-width="40px" label="操作">
+          <el-table-column align="center" min-width="40px" :label="$t('ui.operation')">
             <template #default="{ $index }">
               <el-button
                 type="danger"
@@ -188,8 +188,8 @@ defineExpose({
     </el-form>
     <ErrorEventDrawer ref="errorEventDrawerRef" @confirm="confirmErrorEvent" />
     <template #footer>
-      <el-button @click="drawerVisible = false">取 消</el-button>
-      <el-button type="primary" @click="handleConfirm">确 定</el-button>
+      <el-button @click="drawerVisible = false">{{ $t('ui.cancel') }}</el-button>
+      <el-button type="primary" @click="handleConfirm">{{ $t('ui.confirm') }}</el-button>
     </template>
   </el-drawer>
 </template>

@@ -42,7 +42,7 @@ const body = useCustomRef('body')
 </script>
 
 <template>
-  <el-form-item label="失败重试">
+  <el-form-item :label="$tu('失败重试')">
     <el-input v-model="body"></el-input>
   </el-form-item>
 </template>

@@ -17,11 +17,11 @@ const { cloned, sync } = useCloned<DataObject>({
   type: 'xsd:string',
   value: '',
 })
-const formRules = ref<FormRules>({
-  id: [{ required: true, message: '请输入id', trigger: 'blur' }],
-  name: [{ required: true, message: '请输入名称', trigger: 'blur' }],
-  type: [{ required: true, message: '请选择类型', trigger: 'change' }],
-})
+const formRules = computed<FormRules>(() => ({
+  id: [{ required: true, message: translateUi('请输入id'), trigger: 'blur' }],
+  name: [{ required: true, message: translateUi('请输入名称'), trigger: 'blur' }],
+  type: [{ required: true, message: translateUi('请选择类型'), trigger: 'change' }],
+}))
 const formRef = ref<FormInstance>()
 const drawerVisible = ref(false)
 const openDrawer = (dataObject?: DataObject) => {
@@ -56,7 +56,7 @@ defineExpose({
     append-to-body
     :lock-scroll="false"
     @closed="onClosed"
-    title="数据对象"
+    :title="$tu('数据对象')"
   >
     <el-form
       ref="formRef"
@@ -67,41 +67,41 @@ defineExpose({
       :size="formSize"
     >
       <el-form-item label="id" prop="id">
-        <el-input v-model="cloned.id" placeholder="请输入id">
+        <el-input v-model="cloned.id" :placeholder="$tu('请输入id')">
           <template #append>
             <el-button :icon="Refresh" @click="cloned.id = nextId('DataObject_')" />
           </template>
         </el-input>
       </el-form-item>
-      <el-form-item label="名称" prop="name">
-        <el-input v-model="cloned.name" placeholder="请输入名称" />
+      <el-form-item :label="$tu('名称')" prop="name">
+        <el-input v-model="cloned.name" :placeholder="$tu('请输入名称')" />
       </el-form-item>
-      <el-form-item label="类型" prop="type">
+      <el-form-item :label="$tu('类型')" prop="type">
         <el-select
           v-model="cloned.type"
-          placeholder="请选择类型"
+          :placeholder="$tu('请选择类型')"
           @change="cloned.value = undefined"
         >
-          <el-option label="字符串" value="xsd:string" />
-          <el-option label="整数" value="xsd:int" />
-          <el-option label="长整数" value="xsd:long" />
-          <el-option label="布尔" value="xsd:boolean" />
-          <el-option label="浮点数" value="xsd:double" />
-          <el-option label="时间" value="xsd:datetime" />
+          <el-option :label="$tu('字符串')" value="xsd:string" />
+          <el-option :label="$tu('整数')" value="xsd:int" />
+          <el-option :label="$tu('长整数')" value="xsd:long" />
+          <el-option :label="$tu('布尔')" value="xsd:boolean" />
+          <el-option :label="$tu('浮点数')" value="xsd:double" />
+          <el-option :label="$tu('时间')" value="xsd:datetime" />
         </el-select>
       </el-form-item>
-      <el-form-item label="默认值" prop="value">
+      <el-form-item :label="$tu('默认值')" prop="value">
         <el-input
           type="textarea"
           :rows="4"
           :autosize="{ minRows: 4, maxRows: 10 }"
           v-model="cloned.value"
-          placeholder="请输入默认值"
+          :placeholder="$tu('请输入默认值')"
           v-if="cloned.type === 'xsd:string'"
         />
         <el-input-number
           v-model="cloned.value"
-          placeholder="请输入默认值"
+          :placeholder="$tu('请输入默认值')"
           :min="-2147483648"
           :max="2147483647"
           v-else-if="cloned.type === 'xsd:int'"
@@ -109,14 +109,14 @@ defineExpose({
         />
         <el-input-number
           v-model="cloned.value"
-          placeholder="请输入默认值"
+          :placeholder="$tu('请输入默认值')"
           v-else-if="cloned.type === 'xsd:long'"
           class="w-full"
         />
         <el-switch v-model="cloned.value" v-else-if="cloned.type === 'xsd:boolean'" />
         <el-input-number
           v-model="cloned.value"
-          placeholder="请输入默认值"
+          :placeholder="$tu('请输入默认值')"
           :min="4.9e-324"
           :max="1.7976931348623157e308"
           v-else-if="cloned.type === 'xsd:double'"
@@ -126,15 +126,15 @@ defineExpose({
           type="datetime"
           value-format="YYYY-MM-DDTHH:mm:ss"
           v-model="cloned.value"
-          placeholder="请选择时间"
+          :placeholder="$tu('请选择时间')"
           v-else-if="cloned.type === 'xsd:datetime'"
           class="w-full"
         />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="drawerVisible = false">取 消</el-button>
-      <el-button type="primary" @click="handleConfirm">确 定</el-button>
+      <el-button @click="drawerVisible = false">{{ $t('ui.cancel') }}</el-button>
+      <el-button type="primary" @click="handleConfirm">{{ $t('ui.confirm') }}</el-button>
     </template>
   </el-drawer>
 </template>

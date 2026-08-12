@@ -91,14 +91,16 @@ onMounted(() => {
 <template>
   <div class="event-container">
     <div class="event-header">
-      <el-text>事件监听器</el-text>
-      <el-button type="primary" link :icon="Plus" @click="editEventListener()">添加</el-button>
+      <el-text>{{ $tu('事件监听器') }}</el-text>
+      <el-button type="primary" link :icon="Plus" @click="editEventListener()">{{
+        $t('ui.add')
+      }}</el-button>
     </div>
     <el-table :data="events" height="200px">
-      <el-table-column prop="events" show-overflow-tooltip label="事件"></el-table-column>
-      <el-table-column prop="type" show-overflow-tooltip label="类型"></el-table-column>
-      <el-table-column prop="value" show-overflow-tooltip label="监听"></el-table-column>
-      <el-table-column label="操作" min-width="63px" align="center">
+      <el-table-column prop="events" show-overflow-tooltip :label="$tu('事件')"></el-table-column>
+      <el-table-column prop="type" show-overflow-tooltip :label="$tu('类型')"></el-table-column>
+      <el-table-column prop="value" show-overflow-tooltip :label="$tu('监听')"></el-table-column>
+      <el-table-column :label="$t('ui.operation')" min-width="63px" align="center">
         <template #default="{ row }">
           <el-space>
             <el-button
@@ -107,7 +109,7 @@ onMounted(() => {
               link
               @click="editEventListener(row)"
             ></el-button>
-            <el-popconfirm title="您确定要删除该事件吗？" @confirm="removeEventListener(row)">
+            <el-popconfirm :title="$t('ui.confirmDeleteEvent')" @confirm="removeEventListener(row)">
               <template #reference>
                 <el-button type="danger" :icon="Delete" link></el-button>
               </template>

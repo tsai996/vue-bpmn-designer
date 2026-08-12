@@ -71,9 +71,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="升级事件">
-    <el-form-item prop="escalationRef" label="升级引用">
-      <el-select v-model="escalationRef" placeholder="请选择升级引用">
+  <el-collapse-item name="arg1" :title="$tu('升级事件')">
+    <el-form-item prop="escalationRef" :label="$tu('升级引用')">
+      <el-select v-model="escalationRef" :placeholder="$tu('请选择升级引用')">
         <el-option
           v-for="item in escalations"
           :key="item.id"
@@ -89,7 +89,7 @@ onMounted(() => {
             :icon="Plus"
             @click="addEscalationEvent()"
           >
-            新增升级定义
+            {{ $tu('新增升级定义') }}
           </el-button>
         </template>
       </el-select>

@@ -21,7 +21,7 @@ export default defineConfig({
       symbolId: 'icon-[dir]-[name]',
     }),
     AutoImport({
-      imports: ['vue', 'vue-router'],
+      imports: ['vue', 'vue-router', { '@/languages/uiText': ['translateUi', 'translateUiHtml'] }],
       resolvers: [ElementPlusResolver()],
       dts: 'src/typings/auto-imports.d.ts',
       eslintrc: {

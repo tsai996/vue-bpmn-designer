@@ -275,8 +275,10 @@ const setCurrentComponents = (element: Element) => {
 
   renderToken.value = nextRenderToken
   const functionSlots = Object.fromEntries(
-    Object.entries(slots)
-      .map(([key, value]) => [key, () => value.map((componentKey) => h(PANEL_COMPONENTS[componentKey]) as VNode)]),
+    Object.entries(slots).map(([key, value]) => [
+      key,
+      () => value.map((componentKey) => h(PANEL_COMPONENTS[componentKey]) as VNode),
+    ]),
   )
   renderComponent.value = h(BaseActivity, null, functionSlots)
   renderKey.value = nextRenderToken

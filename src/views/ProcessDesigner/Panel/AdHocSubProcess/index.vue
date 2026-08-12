@@ -41,23 +41,23 @@ const completionCondition = customRef((track, trigger) => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="临时子流程">
-    <el-form-item label="排序">
+  <el-collapse-item name="arg1" :title="$tu('临时子流程')">
+    <el-form-item :label="$tu('排序')">
       <el-radio-group v-model="ordering">
-        <el-radio-button label="并行" value="Parallel" />
-        <el-radio-button label="串行" value="Sequential" />
+        <el-radio-button :label="$tu('并行')" value="Parallel" />
+        <el-radio-button :label="$tu('串行')" value="Sequential" />
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="取消剩余实例">
+    <el-form-item :label="$tu('取消剩余实例')">
       <el-switch v-model="cancelRemainingInstances" active-value="true" inactive-value="false" />
     </el-form-item>
-    <el-form-item label="完成条件">
+    <el-form-item :label="$tu('完成条件')">
       <Codemirror
         :rows="3"
         :max-rows="6"
         autosize
         no-wrap
-        placeholder="请输入完成条件"
+        :placeholder="$tu('请输入完成条件')"
         :extensions="[juelSupport()]"
         v-model="completionCondition"
       />
@@ -65,7 +65,7 @@ const completionCondition = customRef((track, trigger) => {
         v-model="completionCondition"
         type="textarea"
         :rows="3"
-        placeholder="请输入完成条件"
+        :placeholder="$tu('请输入完成条件')"
       />-->
     </el-form-item>
   </el-collapse-item>

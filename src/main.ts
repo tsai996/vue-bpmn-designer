@@ -7,8 +7,10 @@ import 'virtual:svg-icons-register'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import { Icon } from '@iconify/vue'
 import DisableDevtool from 'disable-devtool'
+import { translateUi } from '@/languages/uiText'
 
 const app = createApp(App)
+app.config.globalProperties.$tu = translateUi
 app.use(pinia).component('Iconify', Icon).use(I18n).mount('#app')
 
 if (!['development'].includes(import.meta.env.MODE)) {
@@ -16,7 +18,7 @@ if (!['development'].includes(import.meta.env.MODE)) {
     // url: 'about:blank',
     timeOutUrl: 'about:blank',
     rewriteHTML: `<h3 style='position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%);color: red;'>
-  💢 检测到非法调试，请关闭后刷新重试！
+  💢 ${translateUi('检测到非法调试，请关闭后刷新重试！')}
   </h3>`,
   })
 }

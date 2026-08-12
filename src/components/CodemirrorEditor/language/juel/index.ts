@@ -54,7 +54,10 @@ const juelSupport = (config?: Config) => {
           if (!word || (word.from === word.to && !context.explicit)) return null
           return {
             from: word.from,
-            options: [...JuelCompletions, ...(config?.completions || [])],
+            options: [...JuelCompletions, ...(config?.completions || [])].map((completion) => ({
+              ...completion,
+              detail: completion.detail && translateUi(completion.detail),
+            })),
           }
         }),
       ],

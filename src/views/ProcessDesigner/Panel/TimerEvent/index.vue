@@ -71,28 +71,28 @@ const time = customRef<string>((track, trigger) => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="定时">
-    <el-form-item label="类型">
-      <el-radio-group v-model="type" placeholder="请选择时间类型">
-        <el-radio-button label="时间" value="timeDate" />
-        <el-radio-button label="持续" value="timeDuration" />
-        <el-radio-button label="循环" value="timeCycle" />
+  <el-collapse-item name="arg1" :title="$tu('定时')">
+    <el-form-item :label="$tu('类型')">
+      <el-radio-group v-model="type" :placeholder="$tu('请选择时间类型')">
+        <el-radio-button :label="$tu('时间')" value="timeDate" />
+        <el-radio-button :label="$tu('持续')" value="timeDuration" />
+        <el-radio-button :label="$tu('循环')" value="timeCycle" />
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="等待时间" v-if="type === 'timeDate'">
+    <el-form-item :label="$tu('等待时间')" v-if="type === 'timeDate'">
       <el-date-picker
         v-model="time"
         type="datetime"
         value-format="YYYY-MM-DDTHH:mm:ss"
-        placeholder="请输入等待时间"
+        :placeholder="$tu('请输入等待时间')"
         class="w-full"
       />
     </el-form-item>
-    <el-form-item label="持续时间" v-else-if="type === 'timeDuration'">
-      <el-input v-model="time" placeholder="请输入持续时间" />
+    <el-form-item :label="$tu('持续时间')" v-else-if="type === 'timeDuration'">
+      <el-input v-model="time" :placeholder="$tu('请输入持续时间')" />
     </el-form-item>
-    <el-form-item label="循环时间" v-else-if="type === 'timeCycle'">
-      <el-input v-model="time" placeholder="请输入循环时间" />
+    <el-form-item :label="$tu('循环时间')" v-else-if="type === 'timeCycle'">
+      <el-input v-model="time" :placeholder="$tu('请输入循环时间')" />
     </el-form-item>
   </el-collapse-item>
 </template>

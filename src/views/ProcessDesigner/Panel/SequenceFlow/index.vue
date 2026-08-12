@@ -91,27 +91,27 @@ const updateCondition = (condition?: Element) => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="流转条件">
-    <el-form-item prop="type" label="流转类型">
+  <el-collapse-item name="arg1" :title="$tu('流转条件')">
+    <el-form-item prop="type" :label="$tu('流转类型')">
       <el-radio-group v-model="circulationType">
-        <el-radio-button label="普通" value="none" />
-        <el-radio-button label="默认" value="default" />
-        <el-radio-button label="条件" value="conditional" />
+        <el-radio-button :label="$tu('普通')" value="none" />
+        <el-radio-button :label="$tu('默认')" value="default" />
+        <el-radio-button :label="$tu('条件')" value="conditional" />
       </el-radio-group>
     </el-form-item>
-    <el-form-item v-if="circulationType === 'conditional'" label="条件表达式">
+    <el-form-item v-if="circulationType === 'conditional'" :label="$tu('条件表达式')">
       <Codemirror
         :rows="3"
         :max-rows="6"
         autosize
         no-wrap
-        placeholder="请输入条件表达式"
+        :placeholder="$tu('请输入条件表达式')"
         :extensions="[juelSupport()]"
         v-model="conditionExpression"
       />
       <!--      <el-input
         v-model="conditionExpression"
-        placeholder="请输入条件表达式"
+        :placeholder="$tu('请输入条件表达式')"
         type="textarea"
         :rows="3"
       />-->

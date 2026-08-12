@@ -9,13 +9,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
           <p>流程变量等于比较。</p>
           <p><strong>函数签名</strong></p>
           <p><code class="language-js">var.eq(variableName: String, value: Object): Boolean</code></p>
           <p><strong>例子</strong></p>
           <p><code class="language-js">var.eq("age", 18) // 返回值：true</code></p>
-        `
+        `)
       return div
     },
   }),
@@ -27,13 +27,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>流程变量不等于比较。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">var.ne(variableName: String, value: Object): Boolean</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">var.ne("age", 18) // 返回值：true</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -45,13 +45,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>流程变量小于比较。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">var.lt(variableName: String, value: Object): Boolean</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">var.lt("age", 18) // 返回值：true</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -63,13 +63,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
           <p>流程变量小于等于比较。</p>
           <p><strong>函数签名</strong></p>
           <p><code class="language-js">var.lte(variableName: String, value: Object): Boolean</code></p>
           <p><strong>例子</strong></p>
           <p><code class="language-js">var.lte("age", 18) // 返回值：true</code></p>
-        `
+        `)
       return div
     },
   }),
@@ -81,13 +81,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>流程变量大于比较。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">var.gt(variableName: String, value: Object): Boolean</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">var.gt("age", 18) // 返回值：true</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -99,13 +99,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
           <p>流程变量大于等于比较。</p>
           <p><strong>函数签名</strong></p>
           <p><code class="language-js">var.gte(variableName: String, value: Object): Boolean</code></p>
           <p><strong>例子</strong></p>
           <p><code class="language-js">var.gte("age", 18) // 返回值：true</code></p>
-        `
+        `)
       return div
     },
   }),
@@ -117,13 +117,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>返回流程变量值。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">var.get(variableName: string): any</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">var.get("age") // 返回值：18</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -135,13 +135,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>返回流程变量值，如果不存在则返回默认值。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">var.getOrDefault(variableName: String, defaultValue: Object): Object</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">var.getOrDefault("age", 18) // 返回值：18</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -153,13 +153,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
             <p>判断流程变量是否存在。</p>
             <p><strong>函数签名</strong></p>
             <p><code class="language-js">var.exist(variableName: String): Boolean</code></p>
             <p><strong>例子</strong></p>
             <p><code class="language-js">var.exist("age") // 返回值：true</code></p>
-          `
+          `)
       return div
     },
   }),
@@ -171,13 +171,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
               <p>判断流程变量是否包含指定值。</p>
               <p><strong>函数签名</strong></p>
               <p><code class="language-js">var.contains(variableName: String, value: Object): Boolean</code></p>
               <p><strong>例子</strong></p>
               <p><code class="language-js">var.contains("tags", "important") // 返回值：true</code></p>
-            `
+            `)
       return div
     },
   }),
@@ -189,13 +189,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
               <p>判断流程变量是否包含任意一个值。</p>
               <p><strong>函数签名</strong></p>
               <p><code class="language-js">var.containsAny(variableName: String, values: Array&lt;Object&gt;): Boolean</code></p>
               <p><strong>例子</strong></p>
               <p><code class="language-js">var.containsAny("tags", ["important", "urgent"]) // 返回值：true</code></p>
-            `
+            `)
       return div
     },
   }),
@@ -207,14 +207,14 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
               <p>base64编码/解码</p>
               <p><strong>函数签名</strong></p>
               <p><code class="language-js">var.base64(operation: String, value: String): String</code></p>
               <p><strong>例子</strong></p>
               <p><code class="language-js">var.base64("encode", "Hello World") // 返回值：SGVsbG8gV29ybGQ=</code></p>
               <p><code class="language-js">var.base64("decode", "SGVsbG8gV29ybGQ=") // 返回值：Hello World</code></p>
-              `
+              `)
       return div
     },
   }),
@@ -226,13 +226,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
             <p>判断流程变量是否为空。</p>
             <p><strong>函数签名</strong></p>
             <p><code class="language-js">var.isEmpty(variableName: String): Boolean</code></p>
             <p><strong>例子</strong></p>
             <p><code class="language-js">var.isEmpty("age") // 返回值：true</code></p>
-          `
+          `)
       return div
     },
   }),
@@ -244,13 +244,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
          <p>判断流程变量是否为空。</p>
          <p><strong>函数签名</strong></p>
          <p><code class="language-js">var.notEmpty(variableName: String): Boolean</code></p>
          <p><strong>例子</strong></p>
          <p><code class="language-js">var.notEmpty("age") // 返回值：true</code></p>
-       `
+       `)
       return div
     },
   }),
@@ -262,13 +262,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
          <p>获取任务分配人。</p>
          <p><strong>函数签名</strong></p>
          <p><code class="language-js">bpmn:getAssignee(): String</code></p>
          <p><strong>例子</strong></p>
           <p><code class="language-js">bpmn:getAssignee() // 返回值："zhangsan"</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -280,13 +280,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
           <p>移除任务分配人。</p>
           <p><strong>函数签名</strong></p>
           <p><code class="language-js">bpmn:removeAssignee(): Void</code></p>
           <p><strong>例子</strong></p>
           <p><code class="language-js">bpmn:removeAssignee()</code></p>
-        `
+        `)
       return div
     },
   }),
@@ -298,13 +298,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
           <p>获取任务拥有者。</p>
           <p><strong>函数签名</strong></p>
           <p><code class="language-js">bpmn:getOwner(): String</code></p>
           <p><strong>例子</strong></p>
           <p><code class="language-js">bpmn:getOwner() // 返回值："zhangsan"</code></p>
-        `
+        `)
       return div
     },
   }),
@@ -316,13 +316,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
           <p>移除任务拥有者。</p>
           <p><strong>函数签名</strong></p>
           <p><code class="language-js">bpmn:removeOwner(): Void</code></p>
           <p><strong>例子</strong></p>
           <p><code class="language-js">bpmn:removeOwner()</code></p>
-        `
+        `)
       return div
     },
   }),
@@ -334,13 +334,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
               <p>复制本地变量。</p>
               <p><strong>函数签名</strong></p>
               <p><code class="language-js">bpmn:copyLocalVariable(sourceVariableName: String, targetVariableName: String): Void</code></p>
               <p><strong>例子</strong></p>
               <p><code class="language-js">bpmn:copyLocalVariable("source", "target")</code></p>
-            `
+            `)
       return div
     },
   }),
@@ -352,13 +352,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
               <p>复制本地变量到父级。</p>
               <p><strong>函数签名</strong></p>
               <p><code class="language-js">bpmn:copyLocalVariableToParent(sourceVariableName: String, targetVariableName: String): Void</code></p>
               <p><strong>例子</strong></p>
               <p><code class="language-js">bpmn:copyLocalVariableToParent("source", "target")</code></p>
-            `
+            `)
       return div
     },
   }),
@@ -370,13 +370,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
             <p>获取任务。</p>
             <p><strong>函数签名</strong></p>
             <p><code class="language-js">bpmn:getTask(taskId: String): Task</code></p>
             <p><strong>例子</strong></p>
             <p><code class="language-js">bpmn:getTask("taskId")</code></p>
-          `
+          `)
       return div
     },
   }),
@@ -388,13 +388,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
             <p>替换变量列表。</p>
             <p><strong>函数签名</strong></p>
             <p><code class="language-js">bpmn:replaceVariableInList(variableName: String, index: Integer, listVariableName: List<Object>): Void</code></p>
             <p><strong>例子</strong></p>
             <p><code class="language-js">bpmn:replaceVariableInList("variableName", 0, "listVariableName")</code></p>
-          `
+          `)
       return div
     },
   }),
@@ -406,13 +406,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
             <p>设置业务状态。</p>
             <p><strong>函数签名</strong></p>
             <p><code class="language-js">bpmn:setBusinessStatus(status: String): Void</code></p>
             <p><strong>例子</strong></p>
             <p><code class="language-js">bpmn:setBusinessStatus("status")</code></p>
-          `
+          `)
       return div
     },
   }),
@@ -424,13 +424,13 @@ export const JuelCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
             <p>触发案例评估。</p>
             <p><strong>函数签名</strong></p>
             <p><code class="language-js">bpmn:triggerCaseEvaluation(): Void</code></p>
             <p><strong>例子</strong></p>
             <p><code class="language-js">bpmn:triggerCaseEvaluation()</code></p>
-          `
+          `)
       return div
     },
   }),

@@ -35,17 +35,17 @@ const variableName = useEventRef('variableName')
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="参数监听">
-    <el-form-item label="参数事件">
+  <el-collapse-item name="arg1" :title="$tu('参数监听')">
+    <el-form-item :label="$tu('参数事件')">
       <el-radio-group v-model="variableChangeType">
-        <el-radio-button value="all" label="全部"></el-radio-button>
-        <el-radio-button value="create" label="创建"></el-radio-button>
-        <el-radio-button value="update" label="更新"></el-radio-button>
-        <el-radio-button value="createupdate" label="创建或更新"></el-radio-button>
+        <el-radio-button value="all" :label="$tu('全部')"></el-radio-button>
+        <el-radio-button value="create" :label="$tu('创建')"></el-radio-button>
+        <el-radio-button value="update" :label="$tu('更新')"></el-radio-button>
+        <el-radio-button value="createupdate" :label="$tu('创建或更新')"></el-radio-button>
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="参数名称">
-      <el-input v-model="variableName" placeholder="请输入参数名"></el-input>
+    <el-form-item :label="$tu('参数名称')">
+      <el-input v-model="variableName" :placeholder="$tu('请输入参数名')"></el-input>
     </el-form-item>
   </el-collapse-item>
 </template>

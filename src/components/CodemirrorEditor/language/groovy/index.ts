@@ -54,7 +54,10 @@ const groovySupport = new LanguageSupport(StreamLanguage.define(groovy), [
         if (!word || (word.from === word.to && !context.explicit)) return null
         return {
           from: word.from,
-          options: javascriptCompletions,
+          options: javascriptCompletions.map((completion) => ({
+            ...completion,
+            detail: completion.detail && translateUi(completion.detail),
+          })),
         }
       }),
       ifNotIn(dontComplete, completeFromList(keywords)),

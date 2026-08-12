@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import type { FormProperty } from '@/types'
 import { createElement, useCustomRef } from '@/views/ProcessDesigner/utils/ElementUtil.ts'
 import { useBpmnContextService } from '@/hooks/useService.ts'
@@ -57,7 +57,7 @@ const isUserTask = computed(() => is(selectedElement, 'bpmn:UserTask'))
 const fallbackText = '-'
 const toDisplayText = (value?: string | boolean) => {
   if (typeof value === 'boolean') {
-    return value ? '是' : '否'
+    return translateUi(value ? '是' : '否')
   }
   if (typeof value === 'string') {
     return value.trim() || fallbackText
@@ -65,7 +65,7 @@ const toDisplayText = (value?: string | boolean) => {
   return fallbackText
 }
 const toSwitchLabel = (value: boolean) => {
-  return value ? '是' : '否'
+  return translateUi(value ? '是' : '否')
 }
 const parseBoolean = (value: unknown, defaultValue = false) => {
   if (typeof value === 'boolean') {
@@ -207,51 +207,57 @@ watch(
 </script>
 
 <template>
-  <el-tab-pane label="表单权限" name="form">
+  <el-tab-pane :label="$tu('表单权限')" name="form">
     <el-scrollbar>
       <div class="form-permissions">
-        <el-form-item label="表单标识">
-          <el-input v-model="formKey" clearable placeholder="请输入表单标识"></el-input>
+        <el-form-item :label="$tu('表单标识')">
+          <el-input v-model="formKey" clearable :placeholder="$tu('请输入表单标识')"></el-input>
         </el-form-item>
-        <el-form-item label-position="top" label="表单属性">
+        <el-form-item label-position="top" :label="$tu('表单属性')">
           <template #label>
-            表单属性
-            <el-button type="primary" link :icon="Plus" @click="addFormProperty">添加</el-button>
+            {{ $tu('表单属性') }}
+            <el-button type="primary" link :icon="Plus" @click="addFormProperty">{{
+              $t('ui.add')
+            }}</el-button>
           </template>
           <el-table :data="formPropertyData" height="250px">
             <el-table-column type="expand" width="48">
               <template #default="{ row }">
                 <el-descriptions :column="2" label-width="50" size="small" class="p20px">
-                  <el-descriptions-item label="变量名：">
+                  <el-descriptions-item :label="$tu('变量名：')">
                     {{ toDisplayText(row.variable) }}
                   </el-descriptions-item>
-                  <el-descriptions-item label="表达式：">
+                  <el-descriptions-item :label="$tu('表达式：')">
                     {{ toDisplayText(row.expression) }}
                   </el-descriptions-item>
-                  <el-descriptions-item label="默认值：">
+                  <el-descriptions-item :label="$tu('默认值：')">
                     {{ toDisplayText(row.default) }}
                   </el-descriptions-item>
-                  <el-descriptions-item label="必填：">
+                  <el-descriptions-item :label="$tu('必填：')">
                     {{ toSwitchLabel(row.required) }}
                   </el-descriptions-item>
-                  <el-descriptions-item label="可读：">
+                  <el-descriptions-item :label="$tu('可读：')">
                     {{ toSwitchLabel(row.readable) }}
                   </el-descriptions-item>
-                  <el-descriptions-item label="可写：">
+                  <el-descriptions-item :label="$tu('可写：')">
                     {{ toSwitchLabel(row.writable) }}
                   </el-descriptions-item>
                 </el-descriptions>
               </template>
             </el-table-column>
             <el-table-column prop="id" label="id" show-overflow-tooltip></el-table-column>
-            <el-table-column prop="name" label="名称" show-overflow-tooltip></el-table-column>
+            <el-table-column
+              prop="name"
+              :label="$tu('名称')"
+              show-overflow-tooltip
+            ></el-table-column>
             <el-table-column
               prop="type"
               align="center"
               min-width="65"
-              label="类型"
+              :label="$tu('类型')"
             ></el-table-column>
-            <el-table-column label="操作" min-width="75" align="center">
+            <el-table-column :label="$t('ui.operation')" min-width="75" align="center">
               <template #default="{ row, $index }">
                 <el-button
                   link
@@ -259,7 +265,10 @@ watch(
                   :icon="EditPen"
                   @click="editFormProperty(row)"
                 ></el-button>
-                <el-popconfirm title="您确定要删除该属性吗？" @confirm="delFormProperty($index)">
+                <el-popconfirm
+                  :title="$t('ui.confirmDeleteProperty')"
+                  @confirm="delFormProperty($index)"
+                >
                   <template #reference>
                     <el-button type="danger" :icon="Delete" link></el-button>
                   </template>
@@ -271,11 +280,13 @@ watch(
 
         <FormPropertyDialog ref="formPropertyDialogRef" @confirm="confirmFormProperty" />
 
-        <el-form-item label="操作权限" label-position="top" v-if="isUserTask">
+        <el-form-item :label="$tu('操作权限')" label-position="top" v-if="isUserTask">
           <el-table :data="operationData" height="200px">
-            <el-table-column label="按钮" prop="label"></el-table-column>
-            <el-table-column label="属性" prop="value"></el-table-column>
-            <el-table-column label="是否启用" align="center" prop="enable">
+            <el-table-column :label="$tu('按钮')" prop="label">
+              <template #default="{ row }">{{ $tu(row.label) }}</template>
+            </el-table-column>
+            <el-table-column :label="$tu('属性')" prop="value"></el-table-column>
+            <el-table-column :label="$tu('是否启用')" align="center" prop="enable">
               <template #default="{ row }">
                 <el-switch v-model="row.enable" @change="handleOperationChange(row)" />
               </template>

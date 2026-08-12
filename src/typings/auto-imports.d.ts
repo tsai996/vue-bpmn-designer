@@ -7,7 +7,7 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
-  const ElNotification: typeof import('element-plus/es')['ElNotification']
+  const ElNotification: (typeof import('element-plus/es'))['ElNotification']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const customRef: typeof import('vue')['customRef']
@@ -52,6 +52,8 @@ declare global {
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
   const toValue: typeof import('vue')['toValue']
+  const translateUi: typeof import('@/languages/uiText')['translateUi']
+  const translateUiHtml: typeof import('@/languages/uiText')['translateUiHtml']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']

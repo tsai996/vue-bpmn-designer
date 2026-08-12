@@ -125,22 +125,22 @@ const juelExtension = juelSupport({
     {
       label: 'nrOfInstances',
       type: 'variable',
-      detail: '多实例：总数',
+      detail: translateUi('多实例：总数'),
     },
     {
       label: 'nrOfCompletedInstances',
       type: 'variable',
-      detail: '多实例：已完成数',
+      detail: translateUi('多实例：已完成数'),
     },
     {
       label: 'nrOfActiveInstances',
       type: 'variable',
-      detail: '多实例：进行中数',
+      detail: translateUi('多实例：进行中数'),
     },
     {
       label: 'loopCounter',
       type: 'variable',
-      detail: '多实例：索引',
+      detail: translateUi('多实例：索引'),
     },
   ],
 })
@@ -243,74 +243,77 @@ onMounted(() => {
 
 <template>
   <div>
-    <el-form-item label="实例类型">
+    <el-form-item :label="$tu('实例类型')">
       <el-radio-group v-model="loopCharacteristicsType">
-        <el-radio-button label="无" value="" />
-        <el-radio-button label="并行" value="Parallel" />
-        <el-radio-button label="串行" value="Sequential" />
+        <el-radio-button :label="$tu('无')" value="" />
+        <el-radio-button :label="$tu('并行')" value="Parallel" />
+        <el-radio-button :label="$tu('串行')" value="Sequential" />
       </el-radio-group>
     </el-form-item>
     <div v-if="loopCharacteristicsType">
-      <el-form-item label="基数">
-        <el-input v-model="loopCardinality" placeholder="请输入基数" />
+      <el-form-item :label="$tu('基数')">
+        <el-input v-model="loopCardinality" :placeholder="$tu('请输入基数')" />
       </el-form-item>
       <el-row :gutter="10">
         <el-col :span="form?.labelPosition === 'top' ? 12 : 24">
-          <el-form-item label="集合变量">
-            <el-input v-model="collection" placeholder="请输入集合变量" />
+          <el-form-item :label="$tu('集合变量')">
+            <el-input v-model="collection" :placeholder="$tu('请输入集合变量')" />
           </el-form-item>
         </el-col>
         <el-col :span="form?.labelPosition === 'top' ? 12 : 24">
-          <el-form-item label="元素变量">
+          <el-form-item :label="$tu('元素变量')">
             <el-input
               v-model="elementVariable"
               @change="changeElementVariable"
-              placeholder="请输入元素变量"
+              :placeholder="$tu('请输入元素变量')"
             />
           </el-form-item>
         </el-col>
         <el-col :span="form?.labelPosition === 'top' ? 12 : 24" v-show="false">
-          <el-form-item label="索引变量">
-            <el-input v-model="elementIndexVariable" placeholder="请输入索引变量" />
+          <el-form-item :label="$tu('索引变量')">
+            <el-input v-model="elementIndexVariable" :placeholder="$tu('请输入索引变量')" />
           </el-form-item>
         </el-col>
       </el-row>
-      <el-form-item label="无等待离开" v-show="loopCharacteristicsType === 'Parallel' && false">
+      <el-form-item
+        :label="$tu('无等待离开')"
+        v-show="loopCharacteristicsType === 'Parallel' && false"
+      >
         <el-switch
           v-model="noWaitStatesAsyncLeave"
           :active-value="true"
           :inactive-value="undefined"
         />
       </el-form-item>
-      <el-form-item label="集合处理器" v-show="false">
-        <el-input v-model="collectionHandler" placeholder="请输入集合处理器" />
+      <el-form-item :label="$tu('集合处理器')" v-show="false">
+        <el-input v-model="collectionHandler" :placeholder="$tu('请输入集合处理器')" />
       </el-form-item>
-      <el-form-item label="完成条件">
+      <el-form-item :label="$tu('完成条件')">
         <Codemirror
           autosize
           :max-rows="5"
           no-wrap
-          placeholder="请输入完成条件"
+          :placeholder="$tu('请输入完成条件')"
           :extensions="[juelExtension]"
           v-model="completionCondition"
         />
-        <!--        <el-input v-model="completionCondition" placeholder="请输入完成条件" />-->
+        <!--        <el-input v-model="completionCondition" :placeholder="$tu('请输入完成条件')" />-->
       </el-form-item>
       <el-form-item label-position="top">
         <template #label>
-          变量聚合
+          {{ $tu('变量聚合') }}
           <el-button type="primary" :icon="Plus" link @click="addVariableAggregation()">
-            添加聚合
+            {{ $tu('添加聚合') }}
           </el-button>
         </template>
         <el-table :data="variableAggregations" height="150px">
-          <el-table-column prop="target" label="聚合变量" />
-          <el-table-column prop="variableType" label="变量类型">
+          <el-table-column prop="target" :label="$tu('聚合变量')" />
+          <el-table-column prop="variableType" :label="$tu('变量类型')">
             <template #default="{ row }">
-              {{ row.variableType === 'createOverviewVariable' ? '普通变量' : '瞬态变量' }}
+              {{ $tu(row.variableType === 'createOverviewVariable' ? '普通变量' : '瞬态变量') }}
             </template>
           </el-table-column>
-          <el-table-column align="center" min-width="50px" label="操作">
+          <el-table-column align="center" min-width="50px" :label="$t('ui.operation')">
             <template #default="{ row }">
               <el-space>
                 <el-button
@@ -320,7 +323,7 @@ onMounted(() => {
                   @click="addVariableAggregation(row)"
                 />
                 <el-popconfirm
-                  title="您确定要删除该字段吗？"
+                  :title="$t('ui.confirmDeleteField')"
                   @confirm="removeVariableAggregation(row)"
                 >
                   <template #reference>

@@ -9,13 +9,13 @@ export const javascriptCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>设置流程变量值。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">execution.setVariable(variableName: string, value: any): void</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">execution.setVariable("age", 18)</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -27,13 +27,13 @@ export const javascriptCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>设置本地变量值。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">execution.setVariableLocal(variableName: string, value: any): void</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">execution.setVariableLocal("age", 18)</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -45,13 +45,13 @@ export const javascriptCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>返回流程变量值。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">execution.getVariable(variableName: string): any</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">execution.getVariable("age") // 返回值：18</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -63,13 +63,13 @@ export const javascriptCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>返回本地变量值。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">execution.getVariableLocal(variableName: string): any</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">execution.getVariableLocal("age") // 返回值：18</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -81,13 +81,13 @@ export const javascriptCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>删除流程变量。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">execution.removeVariable(variableName: string): void</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">execution.removeVariable("age")</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -99,14 +99,14 @@ export const javascriptCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>删除流程变量。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">execution.removeVariables(variableNames?: string[]): void</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">execution.removeVariables() // 删除所有流程变量</code></p>
         <p><code class="language-js">execution.removeVariables(["age","name"]) // 删除指定流程变量</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -118,13 +118,13 @@ export const javascriptCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>是否存在流程变量。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">execution.hasVariable(variableName: string): boolean</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">execution.hasVariable("name") // 返回值：true</code></p>
-      `
+      `)
       return div
     },
   }),
@@ -136,13 +136,13 @@ export const javascriptCompletions: Completion[] = [
     info: () => {
       const div = document.createElement('div')
       div.classList.add('description')
-      div.innerHTML = `
+      div.innerHTML = translateUiHtml(`
         <p>是否存在本地变量。</p>
         <p><strong>函数签名</strong></p>
         <p><code class="language-js">execution.hasVariableLocal(variableName: string): boolean</code></p>
         <p><strong>例子</strong></p>
         <p><code class="language-js">execution.hasVariableLocal("name") // 返回值：true</code></p>
-      `
+      `)
       return div
     },
   }),

@@ -114,9 +114,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="补偿事件">
-    <el-form-item prop="activityRef" label="补偿活动">
-      <el-select v-model="activityRef" placeholder="请选择补偿活动">
+  <el-collapse-item name="arg1" :title="$tu('补偿事件')">
+    <el-form-item prop="activityRef" :label="$tu('补偿活动')">
+      <el-select v-model="activityRef" :placeholder="$tu('请选择补偿活动')">
         <el-option
           v-for="item in activityOptions"
           :key="item.id"
@@ -125,7 +125,7 @@ onMounted(() => {
         ></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item prop="waitForCompletion" label="等待完成">
+    <el-form-item prop="waitForCompletion" :label="$tu('等待完成')">
       <el-switch v-model="waitForCompletion"></el-switch>
     </el-form-item>
   </el-collapse-item>

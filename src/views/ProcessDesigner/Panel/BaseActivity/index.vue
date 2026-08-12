@@ -34,24 +34,24 @@ const updateId = (val: string) => {
 
 <template>
   <el-tabs v-model="activeTabName" stretch>
-    <el-tab-pane label="基础配置" name="basic">
+    <el-tab-pane :label="$t('ui.basicSettings')" name="basic">
       <el-scrollbar>
         <el-collapse v-model="actives">
-          <el-collapse-item name="general" title="常规">
-            <el-form-item label="id">
+          <el-collapse-item name="general" :title="$t('ui.general')">
+            <el-form-item :label="$t('ui.id')">
               <el-input
                 :model-value="id"
                 @update:model-value="updateId"
-                placeholder="请输入节点id"
+                :placeholder="$t('ui.enterNodeId')"
               />
             </el-form-item>
-            <el-form-item label="名称" v-if="propertiesByName['name']">
-              <el-input v-model="name" placeholder="请输入节点名称" />
+            <el-form-item :label="$t('ui.name')" v-if="propertiesByName['name']">
+              <el-input v-model="name" :placeholder="$t('ui.enterNodeName')" />
             </el-form-item>
-            <el-form-item label="名称" v-else-if="propertiesByName['text']">
-              <el-input v-model="text" placeholder="请输入节点名称" />
+            <el-form-item :label="$t('ui.name')" v-else-if="propertiesByName['text']">
+              <el-input v-model="text" :placeholder="$t('ui.enterNodeName')" />
             </el-form-item>
-            <el-form-item label="可执行" v-if="propertiesByName['isExecutable']">
+            <el-form-item :label="$t('ui.executable')" v-if="propertiesByName['isExecutable']">
               <el-switch v-model="isExecutable" />
             </el-form-item>
             <slot name="general"></slot>
@@ -61,7 +61,7 @@ const updateId = (val: string) => {
       </el-scrollbar>
     </el-tab-pane>
     <slot></slot>
-    <el-tab-pane label="其他配置" name="other">
+    <el-tab-pane :label="$t('ui.otherSettings')" name="other">
       <el-scrollbar>
         <div class="other-configurations">
           <ExecuteListener v-if="supportsExecutionListener()" />

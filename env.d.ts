@@ -1,9 +1,19 @@
 /// <reference types="vite/client" />
 
-interface ImportMetaEnv {
-  readonly BASE_URL: string
+export {}
+
+declare global {
+  interface ImportMetaEnv {
+    readonly BASE_URL: string
+  }
+
+  interface ImportMeta {
+    readonly env: ImportMetaEnv
+  }
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
+declare module 'vue' {
+  interface ComponentCustomProperties {
+    $tu: (source: string, english?: string) => string
+  }
 }

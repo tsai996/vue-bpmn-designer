@@ -6,24 +6,24 @@ export const isIdValid = (element: Element, idValue: string) => {
   const assigned = element.$model.ids.assigned(idValue)
   const idAlreadyExists = assigned && assigned !== element
   if (!idValue) {
-    return 'id不能为空'
+    return translateUi('id不能为空')
   }
   if (idAlreadyExists) {
-    return 'id必须唯一'
+    return translateUi('id必须唯一')
   }
   return validateId(idValue)
 }
 
 const validateId = (idValue: string) => {
   if (/\s/.test(idValue)) {
-    return 'id不能包含空格'
+    return translateUi('id不能包含空格')
   }
 
   if (!/^[a-z_][\w-.]*$/i.test(idValue)) {
     if (/^([a-z][\w-.]*:)?[a-z_][\w-.]*$/i.test(idValue)) {
-      return 'id不得包含前缀'
+      return translateUi('id不得包含前缀')
     }
-    return 'id必须是有效的QName'
+    return translateUi('id必须是有效的QName')
   }
 }
 

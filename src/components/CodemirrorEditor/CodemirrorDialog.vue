@@ -6,7 +6,7 @@ import baseTheme from '@/components/CodemirrorEditor/theme.ts'
 import type { Extension } from '@codemirror/state'
 
 const {
-  placeholder = '请输入',
+  placeholder = translateUi('请输入'),
   readOnly = false,
   noWrap = false,
   autoWrap = true,
@@ -65,15 +65,15 @@ defineExpose({
     destroy-on-close
     @open="onOpen"
     @close="onClose"
-    title="编辑器"
+    :title="$tu('编辑器')"
   >
     <div class="codemirror-container">
-      <div class="codemirror-head">代码：</div>
+      <div class="codemirror-head">{{ $tu('代码：') }}</div>
       <div ref="codemirrorRef" class="codemirror-editor" />
     </div>
     <template #footer>
-      <el-button type="primary" @click="handleConfirm">确定</el-button>
-      <el-button @click="dialogVisible = false">取消</el-button>
+      <el-button type="primary" @click="handleConfirm">{{ $tu('确定') }}</el-button>
+      <el-button @click="dialogVisible = false">{{ $tu('取消') }}</el-button>
     </template>
   </el-dialog>
 </template>

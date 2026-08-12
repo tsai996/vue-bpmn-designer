@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import en from 'element-plus/es/locale/lang/en'
+import { storeToRefs } from 'pinia'
 import ProcessDesigner from '@/views/ProcessDesigner/index.vue'
 import type { Language } from 'element-plus/es/locale'
 import useAppStore, { type LanguageType } from '@/stores/modules/app.ts'
 
-const { language } = useAppStore()
+const { language } = storeToRefs(useAppStore())
 const languages: Record<LanguageType, Language> = {
   'zh-CN': zhCn,
   'en-US': en,

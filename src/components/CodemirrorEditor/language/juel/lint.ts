@@ -14,7 +14,7 @@ export const juelLinter = linter((view: EditorView): Diagnostic[] => {
       from: 0,
       to: text.length,
       severity: 'error',
-      message: '表达式缺少 ${...} 包裹内容',
+      message: translateUi('表达式缺少 ${...} 包裹内容'),
     })
   } else {
     const inner = match[2].trim()
@@ -23,7 +23,7 @@ export const juelLinter = linter((view: EditorView): Diagnostic[] => {
         from: 0,
         to: text.length,
         severity: 'error',
-        message: '表达式不能为空',
+        message: translateUi('表达式不能为空'),
       })
     }
   }

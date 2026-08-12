@@ -15,10 +15,10 @@ const { cloned, sync } = useCloned<MessageEvent>({
   id: '',
   name: '',
 })
-const formRules = ref<FormRules>({
-  id: [{ required: true, message: '请输入id', trigger: 'blur' }],
-  name: [{ required: true, message: '请输入名称', trigger: 'blur' }],
-})
+const formRules = computed<FormRules>(() => ({
+  id: [{ required: true, message: translateUi('请输入id'), trigger: 'blur' }],
+  name: [{ required: true, message: translateUi('请输入名称'), trigger: 'blur' }],
+}))
 const formRef = ref<FormInstance>()
 const drawerVisible = ref(false)
 const openDrawer = (message?: MessageEvent) => {
@@ -53,7 +53,7 @@ defineExpose({
     append-to-body
     :lock-scroll="false"
     @closed="onClosed"
-    title="消息事件"
+    :title="$tu('消息事件')"
   >
     <el-form
       ref="formRef"
@@ -64,19 +64,19 @@ defineExpose({
       :size="formSize"
     >
       <el-form-item label="id" prop="id">
-        <el-input v-model="cloned.id" placeholder="请输入id">
+        <el-input v-model="cloned.id" :placeholder="$tu('请输入id')">
           <template #append>
             <el-button :icon="Refresh" @click="cloned.id = nextId('Message_')" />
           </template>
         </el-input>
       </el-form-item>
-      <el-form-item label="名称" prop="name">
-        <el-input v-model="cloned.name" placeholder="请输入名称" />
+      <el-form-item :label="$tu('名称')" prop="name">
+        <el-input v-model="cloned.name" :placeholder="$tu('请输入名称')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="drawerVisible = false">取 消</el-button>
-      <el-button type="primary" @click="handleConfirm">确 定</el-button>
+      <el-button @click="drawerVisible = false">{{ $t('ui.cancel') }}</el-button>
+      <el-button type="primary" @click="handleConfirm">{{ $t('ui.confirm') }}</el-button>
     </template>
   </el-drawer>
 </template>

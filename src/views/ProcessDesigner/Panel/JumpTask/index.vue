@@ -63,9 +63,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="节点路由">
-    <el-form-item label="跳转目标">
-      <el-select v-model="targetNodeId" placeholder="请选择跳转目标">
+  <el-collapse-item name="arg1" :title="$tu('节点路由')">
+    <el-form-item :label="$tu('跳转目标')">
+      <el-select v-model="targetNodeId" :placeholder="$tu('请选择跳转目标')">
         <el-option
           v-for="node in nodes"
           :key="node.value"
@@ -74,13 +74,13 @@ onMounted(() => {
         />
       </el-select>
     </el-form-item>
-    <el-form-item label="条件表达式">
+    <el-form-item :label="$tu('条件表达式')">
       <Codemirror
         :rows="3"
         :max-rows="6"
         autosize
         no-wrap
-        placeholder="请输入条件表达式"
+        :placeholder="$tu('请输入条件表达式')"
         :extensions="[juelSupport()]"
         v-model="conditionExpression"
       />

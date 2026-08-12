@@ -14,17 +14,17 @@ const { cloned, sync } = useCloned<Field>({
   type: 'string',
   value: '',
 })
-const formRules = ref<FormRules>({
-  name: [{ required: true, message: '请输入字段名', trigger: 'blur' }],
-  type: [{ required: true, message: '请输入字段类型', trigger: 'blur' }],
+const formRules = computed<FormRules>(() => ({
+  name: [{ required: true, message: translateUi('请输入字段名'), trigger: 'blur' }],
+  type: [{ required: true, message: translateUi('请输入字段类型'), trigger: 'blur' }],
   value: [
-    { required: true, message: '请输入字段值', trigger: 'blur' },
+    { required: true, message: translateUi('请输入字段值'), trigger: 'blur' },
     {
       validator: (_, value) => {
         if (cloned.value.type === 'expression') {
           const reg = /^\$\{.*\}$/
           if (!reg.test(value)) {
-            return new Error('请输入正确的表达式，必须是 ${xx} 格式')
+            return new Error(translateUi('请输入正确的表达式，必须是 ${xx} 格式'))
           }
         }
         return true
@@ -32,7 +32,7 @@ const formRules = ref<FormRules>({
       trigger: 'blur',
     },
   ],
-})
+}))
 const formRef = ref<FormInstance>()
 const drawerVisible = ref(false)
 const openDrawer = (field?: Field) => {
@@ -65,7 +65,7 @@ defineExpose({
     append-to-body
     :lock-scroll="false"
     @closed="onClosed"
-    title="注入字段"
+    :title="$tu('注入字段')"
   >
     <el-form
       ref="formRef"
@@ -75,22 +75,22 @@ defineExpose({
       label-width="90px"
       :size="formSize"
     >
-      <el-form-item label="字段名" prop="name">
-        <el-input v-model="cloned.name" placeholder="请输入字段名" />
+      <el-form-item :label="$tu('字段名')" prop="name">
+        <el-input v-model="cloned.name" :placeholder="$tu('请输入字段名')" />
       </el-form-item>
-      <el-form-item label="字段类型" prop="type">
+      <el-form-item :label="$tu('字段类型')" prop="type">
         <el-radio-group v-model="cloned.type">
-          <el-radio-button value="string" label="字符串" />
-          <el-radio-button value="expression" label="表达式" />
+          <el-radio-button value="string" :label="$tu('字符串')" />
+          <el-radio-button value="expression" :label="$tu('表达式')" />
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="字段值" prop="value">
-        <el-input v-model="cloned.value" placeholder="请输入字段值" />
+      <el-form-item :label="$tu('字段值')" prop="value">
+        <el-input v-model="cloned.value" :placeholder="$tu('请输入字段值')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="drawerVisible = false">取 消</el-button>
-      <el-button type="primary" @click="handleConfirm">确 定</el-button>
+      <el-button @click="drawerVisible = false">{{ $t('ui.cancel') }}</el-button>
+      <el-button type="primary" @click="handleConfirm">{{ $t('ui.confirm') }}</el-button>
     </template>
   </el-drawer>
 </template>

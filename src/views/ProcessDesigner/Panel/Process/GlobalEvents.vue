@@ -131,7 +131,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <el-tab-pane label="全局事件" name="globalEvents">
+  <el-tab-pane :label="$tu('全局事件')" name="globalEvents">
     <el-scrollbar>
       <MessageEventDrawer ref="messageEventDrawerRef" @confirm="confirmMessageEvent" />
       <ErrorEventDrawer ref="errorEventDrawerRef" @confirm="confirmErrorEvent" />
@@ -140,17 +140,26 @@ onMounted(() => {
       <div class="events-list">
         <div class="events-container">
           <div class="events-header">
-            <el-text> 消息定义</el-text>
-            <el-button type="primary" link :icon="Plus" @click="addMessageEvent()">添加</el-button>
+            <el-text> {{ $tu('消息定义') }}</el-text>
+            <el-button type="primary" link :icon="Plus" @click="addMessageEvent()">{{
+              $t('ui.add')
+            }}</el-button>
           </div>
           <el-table :data="messages" height="200px">
             <el-table-column prop="id" show-overflow-tooltip label="id"></el-table-column>
-            <el-table-column prop="name" show-overflow-tooltip label="名称"></el-table-column>
-            <el-table-column label="操作" min-width="45px" align="center">
+            <el-table-column
+              prop="name"
+              show-overflow-tooltip
+              :label="$tu('名称')"
+            ></el-table-column>
+            <el-table-column :label="$t('ui.operation')" min-width="45px" align="center">
               <template #default="{ row }">
                 <el-space>
                   <el-button type="primary" :icon="EditPen" link @click="addMessageEvent(row)" />
-                  <el-popconfirm title="您确定要删除该事件吗？" @confirm="removeMessageEvent(row)">
+                  <el-popconfirm
+                    :title="$t('ui.confirmDeleteEvent')"
+                    @confirm="removeMessageEvent(row)"
+                  >
                     <template #reference>
                       <el-button type="danger" :icon="Delete" link></el-button>
                     </template>
@@ -163,13 +172,19 @@ onMounted(() => {
 
         <div class="events-container">
           <div class="events-header">
-            <el-text> 错误定义</el-text>
-            <el-button type="primary" link :icon="Plus" @click="addErrorEvent()">添加</el-button>
+            <el-text> {{ $tu('错误定义') }}</el-text>
+            <el-button type="primary" link :icon="Plus" @click="addErrorEvent()">{{
+              $t('ui.add')
+            }}</el-button>
           </div>
           <el-table :data="errors" height="200px">
             <el-table-column prop="id" show-overflow-tooltip label="id"></el-table-column>
-            <el-table-column prop="name" show-overflow-tooltip label="名称"></el-table-column>
-            <el-table-column label="操作" min-width="45px" align="center">
+            <el-table-column
+              prop="name"
+              show-overflow-tooltip
+              :label="$tu('名称')"
+            ></el-table-column>
+            <el-table-column :label="$t('ui.operation')" min-width="45px" align="center">
               <template #default="{ row }">
                 <el-space>
                   <el-button
@@ -178,7 +193,10 @@ onMounted(() => {
                     link
                     @click="addErrorEvent(row)"
                   ></el-button>
-                  <el-popconfirm title="您确定要删除该事件吗？" @confirm="removeErrorEvent(row)">
+                  <el-popconfirm
+                    :title="$t('ui.confirmDeleteEvent')"
+                    @confirm="removeErrorEvent(row)"
+                  >
                     <template #reference>
                       <el-button type="danger" :icon="Delete" link></el-button>
                     </template>
@@ -191,13 +209,19 @@ onMounted(() => {
 
         <div class="events-container">
           <div class="events-header">
-            <el-text> 信号定义</el-text>
-            <el-button type="primary" link :icon="Plus" @click="addSignalEvent()">添加</el-button>
+            <el-text> {{ $tu('信号定义') }}</el-text>
+            <el-button type="primary" link :icon="Plus" @click="addSignalEvent()">{{
+              $t('ui.add')
+            }}</el-button>
           </div>
           <el-table :data="signals" height="200px">
             <el-table-column prop="id" show-overflow-tooltip label="id"></el-table-column>
-            <el-table-column prop="name" show-overflow-tooltip label="名称"></el-table-column>
-            <el-table-column label="操作" min-width="45px" align="center">
+            <el-table-column
+              prop="name"
+              show-overflow-tooltip
+              :label="$tu('名称')"
+            ></el-table-column>
+            <el-table-column :label="$t('ui.operation')" min-width="45px" align="center">
               <template #default="{ row }">
                 <el-space>
                   <el-button
@@ -206,7 +230,10 @@ onMounted(() => {
                     link
                     @click="addSignalEvent(row)"
                   ></el-button>
-                  <el-popconfirm title="您确定要删除该事件吗？" @confirm="removeSignalEvent(row)">
+                  <el-popconfirm
+                    :title="$t('ui.confirmDeleteEvent')"
+                    @confirm="removeSignalEvent(row)"
+                  >
                     <template #reference>
                       <el-button type="danger" :icon="Delete" link></el-button>
                     </template>
@@ -219,15 +246,19 @@ onMounted(() => {
 
         <div class="events-container">
           <div class="events-header">
-            <el-text> 升级定义</el-text>
+            <el-text> {{ $tu('升级定义') }}</el-text>
             <el-button type="primary" link :icon="Plus" @click="addEscalationEvent()"
-              >添加
+              >{{ $tu('添加') }}
             </el-button>
           </div>
           <el-table :data="escalations" height="200px">
             <el-table-column prop="id" show-overflow-tooltip label="id"></el-table-column>
-            <el-table-column prop="name" show-overflow-tooltip label="名称"></el-table-column>
-            <el-table-column label="操作" min-width="45px" align="center">
+            <el-table-column
+              prop="name"
+              show-overflow-tooltip
+              :label="$tu('名称')"
+            ></el-table-column>
+            <el-table-column :label="$t('ui.operation')" min-width="45px" align="center">
               <template #default="{ row }">
                 <el-space>
                   <el-button
@@ -237,7 +268,7 @@ onMounted(() => {
                     @click="addEscalationEvent(row)"
                   ></el-button>
                   <el-popconfirm
-                    title="您确定要删除该事件吗？"
+                    :title="$t('ui.confirmDeleteEvent')"
                     @confirm="removeEscalationEvent(row)"
                   >
                     <template #reference>

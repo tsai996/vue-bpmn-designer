@@ -14,7 +14,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-http-service',
     },
@@ -147,7 +147,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-cc-service',
     },
@@ -187,7 +187,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-camel-service',
     },
@@ -227,7 +227,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-shell-service',
     },
@@ -322,7 +322,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-email-service',
     },
@@ -398,7 +398,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-external-worker-service',
     },
@@ -438,7 +438,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-decision-service',
     },
@@ -494,7 +494,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-mule-service',
     },
@@ -559,7 +559,7 @@ export const TASK_CONNECTOR: Connector[] = [
       id: 'connector',
       name: 'Connectors',
     },
-    documentationRef: 'http://182.61.39.195:4080/',
+    documentationRef: 'https://bpmn.io/',
     icon: {
       contents: '#icon-jump-service',
     },

@@ -31,30 +31,30 @@ const changeScriptFormat = (val: string) => {
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="调用脚本">
-    <el-form-item label="脚本格式">
+  <el-collapse-item name="arg1" :title="$tu('调用脚本')">
+    <el-form-item :label="$tu('脚本格式')">
       <el-radio-group v-model="scriptFormat" @change="changeScriptFormat">
         <el-radio-button label="JavaScript" value="javascript" />
         <el-radio-button label="Groovy" value="groovy" />
         <el-radio-button label="Juel" value="juel" />
       </el-radio-group>
     </el-form-item>
-    <el-form-item label="脚本">
+    <el-form-item :label="$tu('脚本')">
       <Codemirror
         :rows="4"
         :max-rows="10"
         autosize
         popup
-        :placeholder="`请输入${scriptFormat}脚本`"
+        :placeholder="$tu(`请输入${scriptFormat}脚本`, `Enter ${scriptFormat} script`)"
         :extensions="extensions"
         v-model="script"
       />
-      <!--      <el-input v-model="script" type="textarea" :rows="4" placeholder="请输入脚本" />-->
+      <!--      <el-input v-model="script" type="textarea" :rows="4" :placeholder="$tu('请输入脚本')" />-->
     </el-form-item>
-    <el-form-item prop="resultVariable" label="结果变量" v-if="scriptFormat === 'juel'">
-      <el-input v-model="resultVariable" placeholder="请输入结果变量" />
+    <el-form-item prop="resultVariable" :label="$tu('结果变量')" v-if="scriptFormat === 'juel'">
+      <el-input v-model="resultVariable" :placeholder="$tu('请输入结果变量')" />
     </el-form-item>
-    <el-form-item prop="autoStoreVariables" label="自动存储变量" v-else>
+    <el-form-item prop="autoStoreVariables" :label="$tu('自动存储变量')" v-else>
       <el-switch v-model="autoStoreVariables" />
     </el-form-item>
   </el-collapse-item>

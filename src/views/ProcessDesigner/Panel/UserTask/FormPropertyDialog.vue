@@ -1,4 +1,4 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 import { useCloned } from '@vueuse/core'
 import { cloneDeep } from 'lodash-es'
 import { nextId } from '@/views/ProcessDesigner/utils/ElementUtil.ts'
@@ -24,10 +24,10 @@ const { cloned, sync } = useCloned<FormProperty>({
   default: '',
 })
 
-const formRules = ref<FormRules>({
-  id: [{ required: true, message: '请输入表单属性id', trigger: 'blur' }],
-  name: [{ required: true, message: '请输入表单属性名称', trigger: 'blur' }],
-  type: [{ required: true, message: '请输入表单属性类型', trigger: 'blur' }],
+const formRules = computed<FormRules>(() => ({
+  id: [{ required: true, message: translateUi('请输入表单属性id'), trigger: 'blur' }],
+  name: [{ required: true, message: translateUi('请输入表单属性名称'), trigger: 'blur' }],
+  type: [{ required: true, message: translateUi('请输入表单属性类型'), trigger: 'blur' }],
   expression: [
     {
       validator: (_, value: string) => {
@@ -37,14 +37,14 @@ const formRules = ref<FormRules>({
         // Flowable 在解析表达式时依赖 EL 包裹格式，提前阻断可避免保存后运行期报错。
         const expressionPattern = /^(\$\{[^{}]+\}|#\{[^{}]+\})$/
         if (!expressionPattern.test(value.trim())) {
-          return new Error('表达式格式错误，请使用 ${...} 或 #{...}')
+          return new Error(translateUi('表达式格式错误，请使用 ${...} 或 #{...}'))
         }
         return true
       },
       trigger: 'blur',
     },
   ],
-})
+}))
 const typeOptions = [
   { label: '字符串 (string)', value: 'string' },
   { label: '长整型 (long)', value: 'long' },
@@ -98,7 +98,7 @@ defineExpose({
     :lock-scroll="false"
     destroy-on-close
     @closed="onClosed"
-    title="表单属性"
+    :title="$tu('表单属性')"
   >
     <el-form
       ref="formRef"
@@ -111,53 +111,53 @@ defineExpose({
       <el-row :gutter="10">
         <el-col :span="24">
           <el-form-item label="id" prop="id">
-            <el-input v-model="cloned.id" placeholder="请输入表单属性id"></el-input>
+            <el-input v-model="cloned.id" :placeholder="$tu('请输入表单属性id')"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="名称" prop="name">
-            <el-input v-model="cloned.name" placeholder="请输入表单属性名称"></el-input>
+          <el-form-item :label="$tu('名称')" prop="name">
+            <el-input v-model="cloned.name" :placeholder="$tu('请输入表单属性名称')"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="类型" prop="type">
-            <el-select v-model="cloned.type" placeholder="请选择类型">
+          <el-form-item :label="$tu('类型')" prop="type">
+            <el-select v-model="cloned.type" :placeholder="$tu('请选择类型')">
               <el-option
                 v-for="item in typeOptions"
                 :key="item.value"
-                :label="item.label"
+                :label="$tu(item.label)"
                 :value="item.value"
               />
             </el-select>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="表达式" prop="expression">
-            <el-input v-model="cloned.expression" placeholder="可选"></el-input>
+          <el-form-item :label="$tu('表达式')" prop="expression">
+            <el-input v-model="cloned.expression" :placeholder="$tu('可选')"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="变量名" prop="variable">
-            <el-input v-model="cloned.variable" placeholder="可选"></el-input>
+          <el-form-item :label="$tu('变量名')" prop="variable">
+            <el-input v-model="cloned.variable" :placeholder="$tu('可选')"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item label="默认值" prop="default">
-            <el-input v-model="cloned.default" placeholder="可选"></el-input>
+          <el-form-item :label="$tu('默认值')" prop="default">
+            <el-input v-model="cloned.default" :placeholder="$tu('可选')"></el-input>
           </el-form-item>
         </el-col>
         <el-col :span="12">
-          <el-form-item :prop="['required', 'readable', 'writable']" label="操作">
-            <el-checkbox v-model="cloned.required" label="必填" />
-            <el-checkbox v-model="cloned.readable" label="可读" />
-            <el-checkbox v-model="cloned.writable" label="可写" />
+          <el-form-item :prop="['required', 'readable', 'writable']" :label="$t('ui.operation')">
+            <el-checkbox v-model="cloned.required" :label="$tu('必填')" />
+            <el-checkbox v-model="cloned.readable" :label="$tu('可读')" />
+            <el-checkbox v-model="cloned.writable" :label="$tu('可写')" />
           </el-form-item>
         </el-col>
       </el-row>
     </el-form>
     <template #footer>
-      <el-button @click="drawerVisible = false">取消</el-button>
-      <el-button type="primary" @click="handleConfirm">确定</el-button>
+      <el-button @click="drawerVisible = false">{{ $t('ui.cancel') }}</el-button>
+      <el-button type="primary" @click="handleConfirm">{{ $t('ui.confirm') }}</el-button>
     </template>
   </el-dialog>
 </template>

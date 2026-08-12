@@ -5,8 +5,8 @@ const terminateAll = useCustomRef('terminateAll')
 </script>
 
 <template>
-  <el-collapse-item name="arg1" title="结束">
-    <el-form-item label="终止所有">
+  <el-collapse-item name="arg1" :title="$tu('结束')">
+    <el-form-item :label="$tu('终止所有')">
       <el-switch v-model="terminateAll"></el-switch>
     </el-form-item>
   </el-collapse-item>

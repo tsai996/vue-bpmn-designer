@@ -14,7 +14,7 @@ const escalationEventRequired = (): RuleDefinition => {
     },
     meta: {
       documentation: {
-        url: 'https://demo.lowflow.vip/',
+        url: 'https://bpmn.io/',
       },
     },
   }

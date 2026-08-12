@@ -18,10 +18,10 @@ const { cloned, sync } = useCloned<Params>({
   source: '',
   target: '',
 })
-const formRules = ref<FormRules>({
-  source: [{ required: true, message: '请输入来源', trigger: 'blur' }],
-  target: [{ required: true, message: '请输入目标', trigger: 'blur' }],
-})
+const formRules = computed<FormRules>(() => ({
+  source: [{ required: true, message: translateUi('请输入来源'), trigger: 'blur' }],
+  target: [{ required: true, message: translateUi('请输入目标'), trigger: 'blur' }],
+}))
 const formRef = ref<FormInstance>()
 const drawerVisible = ref(false)
 const openDrawer = (field?: Params) => {
@@ -55,7 +55,7 @@ defineExpose({
     :lock-scroll="false"
     @closed="onClosed"
     v-bind="$attrs"
-    title="出入参数"
+    :title="$tu('出入参数')"
   >
     <el-form
       ref="formRef"
@@ -65,16 +65,16 @@ defineExpose({
       label-width="90px"
       :size="formSize"
     >
-      <el-form-item label="来源" prop="source">
-        <el-input v-model="cloned.source" placeholder="请输入来源" />
+      <el-form-item :label="$tu('来源')" prop="source">
+        <el-input v-model="cloned.source" :placeholder="$tu('请输入来源')" />
       </el-form-item>
-      <el-form-item label="目标" prop="target">
-        <el-input v-model="cloned.target" placeholder="请输入目标" />
+      <el-form-item :label="$tu('目标')" prop="target">
+        <el-input v-model="cloned.target" :placeholder="$tu('请输入目标')" />
       </el-form-item>
     </el-form>
     <template #footer>
-      <el-button @click="drawerVisible = false">取 消</el-button>
-      <el-button type="primary" @click="handleConfirm">确 定</el-button>
+      <el-button @click="drawerVisible = false">{{ $t('ui.cancel') }}</el-button>
+      <el-button type="primary" @click="handleConfirm">{{ $t('ui.confirm') }}</el-button>
     </template>
   </el-drawer>
 </template>
