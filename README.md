@@ -1,133 +1,134 @@
-﻿<div align="center">
+<div align="center">
     <h1>vue-bpmn-designer</h1>
-    <p>bpmn-js流程设计器 (Flowable版)</p>
+    <p>BPMN process designer (Flowable edition)</p>
     <p>
-      <a href="./README.md">简体中文</a> | <a href="./README.en.md">English</a>
+      <strong>English</strong> | <a href="./README.zh-CN.md">简体中文</a>
     </p>
 </div>
 
 ---
-## 在线预览
 
-- 预览地址：https://tsai996.github.io/vue-bpmn-designer/
+## Online Preview
 
+- Preview URL: https://tsai996.github.io/vue-bpmn-designer/
 
-基于 **Vue 3** + **Vite 6** + **TypeScript** 构建的现代化流程设计器组件。本项目深度集成了 `bpmn-js`，并针对 Flowable 规范进行了深度定制，提供了开箱即用的流程绘制、属性编辑和 BPMN lint 校验等能力。
+Modern BPMN designer built with **Vue 3** + **Vite 6** + **TypeScript**.
+This project deeply integrates `bpmn-js` and provides Flowable-focused customization for diagram modeling, property editing, and BPMN lint validation out of the box.
 
-## ✨ 特性 (Features)
+## ✨ Features
 
-- **⚡️ 最新技术栈**: Vue 3 (Composition API), Vite 6, TypeScript
-- **🎨 全新 UI 体系**: 基于 Element Plus 和 SCSS
-- **⚙️ 深度集成 Bpmn-js**:
-  - 内置 `bpmn-js` (Flowable 语法支持)
-  - `bpmn-js-bpmnlint` 实时语法校验
-  - `bpmn-js-token-simulation` 模拟执行
-  - 内置网格背景、迷你小地图 (`diagram-js-minimap`) 等增强插件
-- **💻 强大的代码编辑器**: 内置 CodeMirror 6，用于高级脚本或配置编辑
-- **🧩 极致的开发体验**:
-  - 配置了 `unplugin-auto-import` 和 `unplugin-vue-components` 实现组件和 API 自动引入
-  - 集成 ESLint、Prettier 进行代码规范检查
+- **⚡️ Modern Stack**: Vue 3 (Composition API), Vite 6, TypeScript
+- **🎨 UI System**: Based on Element Plus and SCSS
+- **⚙️ Deep Bpmn-js Integration**:
+  - Built-in `bpmn-js` with Flowable syntax support
+  - Real-time linting via `bpmn-js-bpmnlint`
+  - Process simulation via `bpmn-js-token-simulation`
+  - Extra plugins such as grid background and mini-map (`diagram-js-minimap`)
+- **💻 Embedded Code Editor**: Built-in CodeMirror 6 for advanced script/config editing
+- **🧩 Developer Experience**:
+  - `unplugin-auto-import` + `unplugin-vue-components` for auto imports
+  - ESLint + Prettier integrated
 
-## 相关项目
+## Related Project
 
-- 如果对仿钉钉流程设计器感兴趣可查看：[lowflow-design](https://gitee.com/cai_xiao_feng/lowflow-design)
+- If you are interested in a DingTalk-style flow designer: [lowflow-design](https://gitee.com/cai_xiao_feng/lowflow-design)
 
-## 仓库地址
+## Repository Mirrors
 
 - Gitee: https://gitee.com/cai_xiao_feng/vue-bpmn-designer
 - GitHub: https://github.com/tsai996/vue-bpmn-designer
 
-## 🖼️ 示例图
+## 🖼️ Screenshots
 
 <p>
-  <img alt="示例图1" src="public/sl1.png" width="480" style="display:inline-block" />
-  <img alt="示例图2" src="public/sl2.png" width="480" style="display:inline-block" />
+  <img alt="Screenshot 1" src="public/sl1.png" width="480" style="display:inline-block" />
+  <img alt="Screenshot 2" src="public/sl2.png" width="480" style="display:inline-block" />
 </p>
 
-## 📦 安装 (Installation)
+## 📦 Installation
 
-本项目推荐使用 `pnpm` 进行依赖管理。
+Use `pnpm` as package manager.
 
 ```bash
-# 克隆项目
+# clone repository
 git clone https://github.com/tsai996/vue-bpmn-designer.git
 
-# 进入项目目录
+# enter project
 cd vue-bpmn-designer
 
-# 安装依赖
+# install dependencies
 pnpm install
 ```
 
-## 🚀 运行与构建 (Scripts)
+## 🚀 Scripts
 
 ```bash
-# 启动本地开发服务器 (默认端口等配置在 vite.config.ts)
+# run dev server (port/options are in vite.config.ts)
 pnpm dev
 
-# 开发环境构建
+# build for development
 pnpm build:dev
 
-# 测试环境构建
+# build for testing
 pnpm build:test
 
-# 生产环境构建 (包含类型检查)
+# build for production (with type checking)
 pnpm build:prod
-# 或者
+# or
 pnpm build
 
-# 预览构建后的本地产物
+# preview local build
 pnpm preview
 
-# 代码类型检查
+# type check
 pnpm type-check
 
-# 运行 ESLint 修复和 Prettier 格式化
+# lint and format
 pnpm lint
 pnpm format
 ```
 
-## 🛠️ 核心目录结构 (Structure)
+## 🛠️ Project Structure
 
 ```text
-├── public/                 # 静态资源
-├── src/                    # 源码核心目录
-│   ├── assets/             # 静态资源 (icons, styles)
-│   ├── components/         # 基础及公共业务组件
-│   ├── typings/            # TS 类型定义及自动生成声明文件 (auto-imports.d.ts 等)
-│   ├── App.vue             # 根组件
-│   └── main.ts             # 挂载入口
-├── .env.*                  # 多环境变量配置文件
-├── AGENTS.md               # ⚠️ AI 开发规则与约束 (必须遵循)
-├── eslint.config.ts        # ESLint 9 配置
-├── vite.config.ts          # Vite 配置 (分包策略、插件配置等)
-└── package.json            # 依赖管理和脚本定义
+├── public/                 # static assets
+├── src/                    # source root
+│   ├── assets/             # static resources (icons, styles)
+│   ├── components/         # base and business components
+│   ├── typings/            # TS type declarations and generated d.ts files
+│   ├── App.vue             # root component
+│   └── main.ts             # app entry
+├── .env.*                  # multi-environment configs
+├── AGENTS.md               # AI collaboration constraints
+├── eslint.config.ts        # ESLint 9 config
+├── vite.config.ts          # Vite config
+└── package.json            # scripts and dependencies
 ```
 
-## ⚠️ 开发前必读 (Important)
+## ⚠️ Important Notes
 
-1.  **自动引入**: 项目大量使用了基于 `unplugin` 的自动导入插件。开发时**切勿**手动导入 `vue` 核心 API (如 `ref`, `computed`) 以及 `element-plus` 组件。
-2.  **Bpmn-js 引擎**: 操作底层 BPMN 模型数据时，**必须**通过 `modeling.updateProperties` 等内部 Command API 修改，**严禁**直接修改 DOM 或业务对象，否则会破坏撤销重做 (Undo/Redo) 功能。
-3.  **AI 规则约束**: 请查阅根目录的 `AGENTS.md` 了解本项目给 AI / Copilot 定义的特殊规则。
+1. **Auto Imports**: This project uses `unplugin`-based auto import heavily. Do **not** manually import Vue core APIs (`ref`, `computed`, etc.) or Element Plus components.
+2. **Bpmn-js Engine**: For BPMN model updates, always use command APIs such as `modeling.updateProperties`. Do **not** mutate DOM or business objects directly, otherwise Undo/Redo may break.
+3. **AI Rules**: Check `AGENTS.md` for project-specific AI development constraints.
 
-## 社群交流
+## Community
 
-> 添加微信好友后（备注：bpmn）可邀请入群。
-
-<p>
-  <img alt="微信" src="public/wx.jpg" width="240" height="400" style="display:inline-block" />
-  <img alt="QQ群" src="public/qq_qun.jpg" width="240" height="400" style="display:inline-block" />
-</p>
-
-## 赞助支持
-
-如果项目对你有帮助，欢迎赞助支持持续维护。
+> Add WeChat (note: bpmn) and request a group invitation.
 
 <p>
-  <img alt="微信支付" src="public/wxpay.png" width="240" height="240" style="display:inline-block" />
-  <img alt="支付宝" src="public/alipay.png" width="240" height="240" style="display:inline-block" />
+  <img alt="WeChat" src="public/wx.jpg" width="240" height="400" style="display:inline-block" />
+  <img alt="QQ Group" src="public/qq_qun.jpg" width="240" height="400" style="display:inline-block" />
 </p>
 
-## 📄 协议 (License)
+## Sponsorship
+
+If this project helps you, sponsorship is welcome.
+
+<p>
+  <img alt="WeChat Pay" src="public/wxpay.png" width="240" height="240" style="display:inline-block" />
+  <img alt="Alipay" src="public/alipay.png" width="240" height="240" style="display:inline-block" />
+</p>
+
+## 📄 License
 
 [Apache-2.0 License](./LICENSE)
